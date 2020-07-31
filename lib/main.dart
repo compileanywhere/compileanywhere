@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,7 +51,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    signup();
+  }
+
+  signup() async {
+    try {
+      FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
+              email: "srinivasd@gmail.com", password: "123456789"))
+          .user;
+    } catch (e) {
+      print(e.message);
+    }
+  }
 
   void _incrementCounter() {
     setState(() {

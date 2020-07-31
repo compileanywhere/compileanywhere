@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "789656347079",
+    "firebase_url": "https://compile-anywhere.firebaseio.com",
+    "project_id": "compile-anywhere",
+    "storage_bucket": "compile-anywhere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789656347079:android:03c92eadc1495dc8b639e2",
+        "android_client_info": {
+          "package_name": "com.sairamce.compileanywhere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789656347079-achnj3dvvre3a1k7klv7crb70ktvu69p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn5FHe1e61tcjU8ZT_GDmeApV-Cz8W24o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "789656347079-achnj3dvvre3a1k7klv7crb70ktvu69p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
