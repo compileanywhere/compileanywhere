@@ -17,12 +17,13 @@ class _HomePageState extends State<HomePage> {
     isSignedIn = false;
     super.initState();
     checkAuthentication();
+    getUser();
   }
 
   checkAuthentication() async {
     _auth.onAuthStateChanged.listen((event) {
       if (event == null) {
-        Navigator.pushNamed(context, '/intro');
+        Navigator.pushReplacementNamed(context, '/intro');
       }
     });
   }

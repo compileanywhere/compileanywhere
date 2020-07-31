@@ -1,12 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  checkAuthentication() {
+    _auth.onAuthStateChanged.listen((user) async {
+      if (user != null) {
+        Navigator.pushReplacementNamed(context, '/');
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    checkAuthentication();
+  }
+
+  signIn(String email, String password) async {
+    try {
+      FirebaseUser user = (await _auth.signInWithEmailAndPassword(
+              email: email, password: password))
+          .user;
+    } catch (e) {
+      showError(e.message);
+    }
+  }
+
+  showError(String errorMessage) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text(errorMessage),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 padding: EdgeInsets.only(left: 15, right: 15, top: 60),
                 child: TextField(
+                  controller: _emailController,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
@@ -67,6 +118,7 @@ class _LoginPageState extends State<LoginPage> {
               Container(
                 padding: EdgeInsets.fromLTRB(13, 15, 13, 0),
                 child: TextField(
+                  controller: _passwordController,
                   cursorColor: Colors.white,
                   style: TextStyle(color: Colors.white),
                   obscureText: true,
@@ -124,7 +176,10 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(36))),
-                        onPressed: () async {},
+                        onPressed: () {
+                          signIn(
+                              _emailController.text, _passwordController.text);
+                        },
                         child: Text(
                           'Sign in',
                           style: TextStyle(

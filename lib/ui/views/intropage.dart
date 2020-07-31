@@ -26,13 +26,13 @@ class _IntroPageState extends State<IntroPage> {
           child: Container(
             decoration: new BoxDecoration(
                 image:
-                    DecorationImage(image: new AssetImage("images/Logo1.png"))),
+                    DecorationImage(image: new AssetImage("assets/Logo1.png"))),
           ),
         ),
         Container(
           padding: EdgeInsets.fromLTRB(58, 340, 0, 0),
           child: Text(
-            "Let's get started",
+            "Let' get started",
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.w100,
               fontSize: 40,
@@ -55,7 +55,7 @@ class _IntroPageState extends State<IntroPage> {
               ),
             ),
             onPressed: () async {
-              Navigator.pushNamed(context, "/login");
+              Navigator.pushReplacementNamed(context, "/login");
             },
             borderSide: BorderSide(
               color: Colors.white,
