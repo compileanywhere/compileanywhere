@@ -56,7 +56,10 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Text(
-                      this.uId.toString(),
+                      "welcome: " + user.displayName,
+                    ),
+                    Text(
+                      "your id is " + this.uId,
                     ),
                     RaisedButton(
                       onPressed: signOut,

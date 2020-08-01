@@ -55,7 +55,7 @@ class _IntroPageState extends State<IntroPage> {
               ),
             ),
             onPressed: () async {
-              Navigator.pushReplacementNamed(context, "/login");
+              Navigator.pushNamed(context, "/login");
             },
             borderSide: BorderSide(
               color: Colors.white,
@@ -72,7 +72,7 @@ class _IntroPageState extends State<IntroPage> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0))),
             onPressed: () {
-              // Navigator.pushNamed(context, "/lop1");
+              Navigator.pushNamed(context, '/signup');
             },
             child: Text(
               'Sign up',

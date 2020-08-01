@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   checkAuthentication() {
     _auth.onAuthStateChanged.listen((user) async {
       if (user != null) {
+        Navigator.of(context).pop();
         Navigator.pushReplacementNamed(context, '/');
       }
     });
@@ -92,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          Navigator.of(context).pushNamed("/");
+                          Navigator.of(context).pop();
                         })),
               ]),
               Container(
