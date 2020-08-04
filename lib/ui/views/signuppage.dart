@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -80,9 +81,10 @@ class _SignupPageState extends State<SignupPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.only(top:40,),
               ),
               Row(
+            
                 children: [
                   IconButton(
                     icon: Icon(
@@ -112,7 +114,7 @@ class _SignupPageState extends State<SignupPage> {
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.only(top:70,left: 20,right:20),
                       child: TextFormField(
                         validator: (input) {
                           if (input.isEmpty) {
@@ -125,8 +127,10 @@ class _SignupPageState extends State<SignupPage> {
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 15),
                             hintText: 'email',
-                            hintStyle: TextStyle(
-                              color: Colors.white70,
+                            hintStyle: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w200,
+                              color: Colors.white,
+                          
                             ),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white))),
@@ -147,13 +151,17 @@ class _SignupPageState extends State<SignupPage> {
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 15),
                             hintText: 'password',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w200,
+                              color: Colors.white,
+                          
+                            ),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white))),
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.only(left:20,right: 20,bottom: 0),
                       child: TextFormField(
                         validator: (input) {
                           if (input.length < 6) {
@@ -167,7 +175,11 @@ class _SignupPageState extends State<SignupPage> {
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(top: 15),
                             hintText: 'confirm password',
-                            hintStyle: TextStyle(color: Colors.white70),
+                            hintStyle: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w200,
+                              color: Colors.white,
+                          
+                            ),
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.white))),
                       ),
@@ -180,15 +192,25 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       child: RaisedButton(
                         color: Colors.white,
-                        padding: EdgeInsets.fromLTRB(45, 0, 45, 0),
+                        padding: EdgeInsets.fromLTRB(40, 7, 40, 7),
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(36.0))),
-                        onPressed: signup,
-                        child: Text(
-                          'Signup',
-                          style: TextStyle(color: Colors.blue, fontSize: 17),
-                        ),
+                        onPressed:
+                       ()
+                        {
+                          Navigator.pushReplacementNamed(context, '/profile');
+                        }
+                      //  signup,
+                      //   child: Text(
+                      //     'Signup',
+                      //       style: GoogleFonts.poppins(
+                      //         fontWeight: FontWeight.w600,
+                      //         fontSize: 19,
+                      //         color: Color(0xFF1DA3F2),
+                          
+                      //       ),
+                      //    ),
                       ),
                     ),
                     Padding(padding: EdgeInsets.all(112)),

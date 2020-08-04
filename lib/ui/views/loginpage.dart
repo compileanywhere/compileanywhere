@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(children: [
               Stack(children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                  padding: EdgeInsets.fromLTRB(0, 28, 0, 0),
                   alignment: Alignment(0, 1),
                   child: Text(
                     'Sign in',
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                    padding: EdgeInsets.only(left: 5, top: 28),
+                    padding: EdgeInsets.only(left: 5, top: 23),
                     child: IconButton(
                         icon: Icon(
                           Icons.arrow_back_ios,
@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                         })),
               ]),
               Container(
-                padding: EdgeInsets.only(left: 15, right: 15, top: 60),
+                padding: EdgeInsets.only(left: 15, right: 15, top: 65),
                 child: TextField(
                   controller: _emailController,
                   cursorColor: Colors.white,
@@ -126,7 +126,11 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(top: 15),
                       hintText: 'password',
-                      hintStyle: TextStyle(color: Colors.white70),
+                      hintStyle: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white))),
                 ),
@@ -135,12 +139,15 @@ class _LoginPageState extends State<LoginPage> {
                 Column(children: [
                   Stack(children: [
                     Container(
-                      padding: EdgeInsets.fromLTRB(15, 40, 230, 2),
+                      padding: EdgeInsets.fromLTRB(15, 37, 230, 2),
                       child: Text(
-                        'NO account? ',
-                        style: TextStyle(
-                          color: Colors.white70,
-                        ),
+                        'No account? ',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w200,
+                          color: Colors.white,
+                          fontSize: 14,
+
+                        )
                       ),
                     ),
                     Container(
@@ -150,21 +157,25 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.of(context).pushNamed("/login");
                             },
                             child: Text(
-                              'Create one!',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
+                              ' Create one!',
+                              style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontSize: 14,
+                              )
                             )))
                   ])
                 ]),
                 Positioned(
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(15, 100, 250, 0),
+                    padding: EdgeInsets.fromLTRB(15, 93, 250, 0),
                     child: Text(
-                      'Forgot Password?',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                      'Forgot password?',
+                      style: GoogleFonts.poppins(
+                        color:Colors.white,
+                        fontWeight:FontWeight.w400,
+                        fontSize: 14,
+                      )
                     ),
                   ),
                 ),
@@ -172,21 +183,23 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                       padding: EdgeInsets.fromLTRB(260, 80, 0, 0),
                       child: RaisedButton(
-                        padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+                        padding: EdgeInsets.fromLTRB(40, 7, 40, 7),
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(36))),
                         onPressed: () {
-                          signIn(
-                              _emailController.text, _passwordController.text);
-                        },
+                        //   signIn(
+                        //       _emailController.text, _passwordController.text);
+                        Navigator.pushReplacementNamed(context,'/setupprofile');
+                         },
                         child: Text(
                           'Sign in',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.blue,
-                          ),
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF1DA1F2 ),
+                            fontSize: 19,
+                          )
                         ),
                       )),
                 ),

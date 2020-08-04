@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SetupProfilePage extends StatefulWidget {
   @override
@@ -36,11 +37,17 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(12),
+              padding: EdgeInsets.only(top:48,
+              // left: 12,
+              // right: 12
+              // ,bottom: 12
+              ),
             ),
             Row(
+              
               children: [
                 IconButton(
+                  padding: EdgeInsets.only(bottom:5,),
                   icon: Icon(
                     Icons.arrow_back_ios,
                     color: Colors.white,
@@ -49,34 +56,38 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
                 ),
                 SizedBox(
                   width: 90,
+                  
                 ),
+                
+                //Padding(padding: EdgeInsets.only(right:80),),
                 Text(
-                  'Setup Profile',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    'Setup Profile',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
               ],
             ),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.only(top:57),
             ),
             Stack(
               children: [
                 Container(
+                  padding: EdgeInsets.only(left:10),
                   child: Center(
                     child: CircleAvatar(
                       backgroundImage: AssetImage('assets/avatar.png'),
-                      radius: 65,
+                      radius: 73,
                     ),
                   ),
                 ),
                 Positioned(
                   left: 240,
-                  top: 99,
+                  top: 109,
                   child: ClipOval(
                     child: Container(
                       color: Colors.white,
@@ -96,7 +107,8 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
               child: TextField(
                 controller: _nameController,
                 cursorColor: Colors.white,
-                style: TextStyle(color: Colors.white),
+                style: GoogleFonts.poppins(color:Colors.white,
+                fontWeight:FontWeight.w200,),
                 decoration: InputDecoration(
                     contentPadding: EdgeInsets.only(top: 15),
                     hintText: 'username',
@@ -111,11 +123,11 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
               padding: EdgeInsets.only(
                 top: 20,
                 bottom: 20,
-                left: 220,
+                left: 250,
               ),
               child: RaisedButton(
                 color: Colors.white,
-                padding: EdgeInsets.fromLTRB(45, 0, 45, 0),
+                padding: EdgeInsets.fromLTRB(45, 3, 45, 3),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(36.0))),
                 onPressed: setupProfile,
@@ -126,7 +138,7 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(123),
+              padding: EdgeInsets.only(left:123,right: 123,top: 172),
             ),
             Container(
               padding: EdgeInsets.all(10),
