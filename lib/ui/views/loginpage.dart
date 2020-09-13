@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:compileanywhere/ui/models/usermodels.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -13,31 +14,48 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = new TextEditingController();
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  checkAuthentication() {
-    _auth.onAuthStateChanged.listen((user) async {
-      if (user != null) {
-        Navigator.of(context).pop();
-        Navigator.pushReplacementNamed(context, '/');
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkAuthentication();
-  }
-
-  signIn(String email, String password) async {
+ login(String email ,String password)async{
     try {
       FirebaseUser user = (await _auth.signInWithEmailAndPassword(
               email: email, password: password))
           .user;
+               Firestore.instance.collection('users').document(user.uid).get().then((document){
+               print('User details');
+                print(document.data['name']);
+                 UserDetails().updateUser(document.data['name'],document.data['username'], document.data['email'], user.uid, document.data['profilepicurl'],user);
+               });
+
+         
+
     } catch (e) {
       showError(e.message);
     }
   }
+     @override
+  void initState() {
+    super.initState();
+    checkAuthentication();
+    super.initState();
+    
+  }
+  checkAuthentication() {
+    _auth.onAuthStateChanged.listen((user) async {
+      if (user != null) {
+        Navigator.of(context).pop();
+        Navigator.pushReplacementNamed(context, '/lop');
+      }
+    });
+  }
+
+  // signIn(String email, String password) async {
+  //   try {
+  //     FirebaseUser user = (await _auth.signInWithEmailAndPassword(
+  //             email: email, password: password))
+  //         .user;
+  //   } catch (e) {
+  //     showError(e.message);
+  //   }
+  // }
 
   showError(String errorMessage) {
     showDialog(
@@ -72,17 +90,18 @@ class _LoginPageState extends State<LoginPage> {
             )),
             child: ListView(children: [
               Stack(children: [
+
+              
                 Container(
                   padding: EdgeInsets.fromLTRB(0, 28, 0, 0),
                   alignment: Alignment(0, 1),
                   child: Text(
-                    'Sign in',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 32,
-                    ),
+                      'Sign in',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w600,
+                fontSize: 30,
+                color: Colors.white,
+              ),
                   ),
                 ),
                 Container(
@@ -93,7 +112,8 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          Navigator.of(context).pop();
+                         Navigator.pushReplacementNamed(context, '/intro');
+                         // Navigator.of(context).pop();
                         })),
               ]),
               Container(
@@ -138,45 +158,39 @@ class _LoginPageState extends State<LoginPage> {
               Stack(children: [
                 Column(children: [
                   Stack(children: [
+                    
                     Container(
                       padding: EdgeInsets.fromLTRB(15, 37, 230, 2),
-                      child: Text(
-                        'No account? ',
-                        style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w200,
-                          color: Colors.white,
-                          fontSize: 14,
-
-                        )
-                      ),
+                      child: Text('No account? ',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w200,
+                            color: Colors.white,
+                            fontSize: 14,
+                          )),
                     ),
                     Container(
                         padding: EdgeInsets.only(left: 90, top: 24),
                         child: FlatButton(
                             onPressed: () {
-                              Navigator.of(context).pushNamed("/login");
+                              Navigator.of(context).pushNamed("/signup");
                             },
-                            child: Text(
-                              ' Create one!',
-                              style: GoogleFonts.poppins(
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                              fontSize: 14,
-                              )
-                            )))
+                            child: Text(' Create one!',
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ))))
                   ])
                 ]),
                 Positioned(
                   child: Container(
                     padding: EdgeInsets.fromLTRB(15, 93, 250, 0),
-                    child: Text(
-                      'Forgot password?',
-                      style: GoogleFonts.poppins(
-                        color:Colors.white,
-                        fontWeight:FontWeight.w400,
-                        fontSize: 14,
-                      )
-                    ),
+                    child: Text('Forgot password?',
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        )),
                   ),
                 ),
                 Positioned(
@@ -189,18 +203,16 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(36))),
                         onPressed: () {
-                        //   signIn(
-                        //       _emailController.text, _passwordController.text);
-                        Navigator.pushReplacementNamed(context,'/setupprofile');
-                         },
-                        child: Text(
-                          'Sign in',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF1DA1F2 ),
-                            fontSize: 19,
-                          )
-                        ),
+
+                              login(_emailController.text, _passwordController.text);
+                            // Navigator.pushReplacementNamed(context, '/lop');
+                        },
+                        child: Text('Sign in',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1DA1F2),
+                              fontSize: 19,
+                            )),
                       )),
                 ),
               ]),
@@ -211,7 +223,10 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       color: Colors.white,
                     ),
-                  ))
+                  )),
+
+
+                  
             ])),
       ),
     );

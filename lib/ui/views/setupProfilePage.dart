@@ -17,7 +17,7 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
       if (user != null) {
         user
             .updateProfile(updateInfo)
-            .then((value) => {Navigator.pushReplacementNamed(context, '/')});
+            .then((value) => {Navigator.pushReplacementNamed(context, '/lop')});
       }
     });
   }
@@ -130,10 +130,20 @@ class _SetupProfilePageState extends State<SetupProfilePage> {
                 padding: EdgeInsets.fromLTRB(45, 3, 45, 3),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(36.0))),
-                onPressed: setupProfile,
+                onPressed: 
+                // (){
+                  // Navigator.pushReplacementNamed(context, '/intro');
+                                  setupProfile,
+
+                // },
                 child: Text(
-                  'Next',
-                  style: TextStyle(color: Colors.blue, fontSize: 17),
+                  'Signup',
+               style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 19,
+                              color: Color(0xFF1DA3F2),
+                          
+                            ),
                 ),
               ),
             ),

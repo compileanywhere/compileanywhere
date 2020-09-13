@@ -1,5 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:compileanywhere/ui/models/usermodels.dart';
+import 'package:compileanywhere/ui/widgets/avatarwithicon.dart';
+import 'package:compileanywhere/ui/widgets/localwidgets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class EditProfile extends StatefulWidget {
   @override
@@ -7,247 +14,258 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _password, _confirmPassword, _username;
+
+  _updateProfile() async {
+    _formKey.currentState.save();
+    if (_formKey.currentState.validate()) {
+      _formKey.currentState.save();
+
+      try {
+        Firestore.instance
+            .collection('users')
+            .document(UserDetails().uid)
+            .updateData({
+          'username': _username,
+        });
+        UserDetails().username = _username;
+        FirebaseUser user = await FirebaseAuth.instance.currentUser();
+        user.updatePassword(_password).then((value) {
+          print('password updated');
+          UserDetails().user = user;
+        }).catchError((error) {
+          print(error);
+        });
+      } catch (e) {}
+    }
+  }
+
+  double sideLength = 50;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)],
-            //colors: [Colors.green, Colors.red],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          )),
-          child: Column(
-            children: <Widget>[
-              Column(children: [
-                Stack(children: [
-                  Container(
-                    width: 500,
-                    padding: EdgeInsets.only(top: 25, left: 140),
-                    child: Text(
-                      'Edit Profile',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 30,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    child: Positioned(
-                      top: 23,
-                      right: 355,
-                      child: IconButton(
-                        color: Colors.white,
-                        iconSize: 27,
-                        onPressed: () {
-                          Navigator.of(context).pushNamed("/profile");
-                        },
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                        ),
-                      ),
-                    ),
-                  ),
-                  //////////]),
-
-                  Container(
-                    padding: EdgeInsets.only(top: 180, left: 18),
-                    child: SizedBox(
-                      width: 380,
-                      height: 480,
-                      child: Card(
-                          shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(12))),
-                          child: Column(children: [
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 60,
-                                right: 240,
-                              ),
+    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
+    return Padding(
+      padding: EdgeInsets.only(top:8.h),
+          child: BackgroundBox(
+          appBar: TransparentAppBar(
+      title: "Edit Profile",
+          ),
+          child: SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: Form(
+          key: _formKey,
+          child: Column(children: [
+            SizedBox(
+              height: 60.h,
+            ),
+            SizedBox(
+              width: 328.w,
+              height: 443.h,
+              child: Stack(children: [
+                SizedBox(
+                  width: 328.w,
+                  height: 403.h,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.0),
+                        color: Colors.white),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 16.h, horizontal: 16.w),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              height: 36.h,
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
                               child: Text(
                                 'Username',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 18,
-                                  color: Color(0xFF394AA3),
+                                  fontSize: ScreenUtil().setSp(14),
+                                  color: Color(0xFF7277F1),
                                 ),
                               ),
                             ),
-                            Container(
-                                padding: EdgeInsets.only(
-                                  top: 4,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                child: TextField(
-                                  cursorColor: Colors.blue,
-                                  //style: TextStyle(color: Colors.blue),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xFF394AA3))),
-                                      contentPadding: EdgeInsets.only(
-                                        top: 13,
-                                      ),
-                                      hintText: 'Shrek',
-                                      hintStyle: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFF394AA3),
-                                      )),
-                                )),
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 37,
-                                right: 250,
+                            SizedBoxPadding(),
+                            TextFormField(
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF7277F1),
+                                fontSize: ScreenUtil().setSp(14),
                               ),
+                              validator: (input) {
+                                if (input.isEmpty) {
+                                  return 'Provide a valid username';
+                                }
+                              },
+                              onSaved: (input) => _username = input,
+                              initialValue: UserDetails().username,
+                              cursorColor: Color(0xFF7277F1),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xff7277F1),
+                                    width: 0.0,
+                                  ),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0xff7277F1),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                hintStyle: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w200,
+                                  color: Color(0xFF7277F1),
+                                  fontSize: ScreenUtil().setSp(12),
+                                ),
+                                contentPadding: EdgeInsets.only(
+                                  top: 13.h,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 36.h,
+                            ),
+                            Align(
+                              alignment: Alignment.topLeft,
                               child: Text(
                                 'Password',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 18,
-                                  color: Color(0xFF394AA3),
+                                  fontSize: ScreenUtil().setSp(14),
+                                  color: Color(0xFF7277F1),
                                 ),
                               ),
                             ),
-                            Container(
-                                padding: EdgeInsets.only(
-                                  top: 4,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                child: TextField(
-                                  cursorColor: Colors.blue,
-                                  //style: TextStyle(color: Colors.blue),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xFF394AA3))),
-                                      contentPadding: EdgeInsets.only(
-                                        top: 18,
-                                      ),
-                                      hintText: 'old password',
-                                      hintStyle: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w200,
-                                        color: Color(0xFF394AA3),
-                                        fontSize: 15,
-                                      )),
-                                )),
-                            Container(
-                                padding: EdgeInsets.only(
-                                  top: 20,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                child: TextField(
-                                  cursorColor: Colors.blue,
-                                  //style: TextStyle(color: Colors.blue),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xFF394AA3))),
-                                      contentPadding: EdgeInsets.only(
-                                        top: 18,
-                                      ),
-                                      hintText: 'new password',
-                                      hintStyle: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w200,
-                                        color: Color(0xFF394AA3),
-                                        fontSize: 15,
-                                      )),
-                                )),
-                            Container(
-                                padding: EdgeInsets.only(
-                                  top: 20,
-                                  left: 20,
-                                  right: 20,
-                                ),
-                                child: TextField(
-                                  cursorColor: Colors.blue,
-                                  //style: TextStyle(color: Colors.blue),
-                                  decoration: InputDecoration(
-                                      enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Color(0xFF394AA3))),
-                                      contentPadding: EdgeInsets.only(
-                                        top: 18,
-                                      ),
-                                      hintText: 'confirm password',
-                                      hintStyle: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w200,
-                                        color: Color(0xFF394AA3),
-                                        fontSize: 15,
-                                      )),
-                                )),
-                            Container(
-                              padding: EdgeInsets.only(
-                                top: 25,
-                                left: 200,
+                            TextFormField(
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF7277F1),
+                                fontSize: ScreenUtil().setSp(14),
                               ),
-                              child: RaisedButton(
-                                padding: EdgeInsets.fromLTRB(30, 6, 30, 6),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(32))),
-                                color: Color(0xFF394AA3),
-                                onPressed: () {
-                                 Navigator.pushNamed(context, '/lop');
-                                 // Navigator.of(context).pushNamed("/lop1");
-                                },
-                                child: Text(
-                                  'Confirm',
-                                  style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize: 18,
+                              validator: (input) {
+                                if (input.length < 8) {
+                                  return 'Provide a valid password';
+                                }
+                              },
+                              onSaved: (input) => _password = input,
+                              cursorColor: Color(0xFF7277F1),
+                              decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xff7277F1),
+                                      width: 0.0,
+                                    ),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xff7277F1),
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  contentPadding: EdgeInsets.only(
+                                    top: 13.h,
+                                  ),
+                                  hintText: 'new password',
+                                  hintStyle: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w200,
+                                    color: Color(0xFF7277F1),
+                                    fontSize: ScreenUtil().setSp(12),
+                                  )),
+                            ),
+                            SizedBoxPadding(),
+                            TextFormField(
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF7277F1),
+                                fontSize: ScreenUtil().setSp(14),
+                              ),
+                              validator: (input) {
+                                if (input.length < 8) {
+                                  return 'Provide a valid password';
+                                }
+                                if (input != _password) {
+                                  return 'passwords dont match';
+                                }
+                              },
+                              onSaved: (input) => _confirmPassword = input,
+                              cursorColor: Color(0xFF7277F1),
+                              decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xff7277F1),
+                                      width: 0.0,
+                                    ),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xff7277F1),
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  contentPadding: EdgeInsets.only(
+                                    top: 13.h,
+                                  ),
+                                  hintText: 'confirm password',
+                                  hintStyle: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w200,
+                                    color: Color(0xFF7277F1),
+                                    fontSize: ScreenUtil().setSp(12),
+                                  )),
+                            ),
+                            SizedBoxPadding(),
+                            Align(
+                              alignment: Alignment.bottomRight,
+                              child: SizedBox(
+                                width: 112.w,
+                                height: 32.h,
+                                child: FlatButton(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(36.h)),
+                                  color: Color(0xFF7277F1),
+                                  onPressed: _updateProfile,
+                                  child: Text(
+                                    'Confirm',
+                                    style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                      fontSize: ScreenUtil().setSp(14),
+                                    ),
                                   ),
                                 ),
                               ),
                             )
-                          ])),
+                          ]),
                     ),
                   ),
-
-                  Positioned(
-                    left: 153,
-                    //bottom: 390,
-                    top: 93,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xFF394AA3),
-                      radius: 58,
-                      child: CircleAvatar(
-                        foregroundColor: Colors.red,
-
-                        //  backgroundColor: Colors.blueAccent,
-                        backgroundImage: AssetImage('assets/avatar.png'),
-                        radius: 55,
-                      ),
-                    ),
+                ),
+                Align(
+                  alignment: Alignment(0, -1.25),
+                  child: AvatarWithIcon(
+                    width: 80.w,
+                    height: 80.h,
+                    avatar: NetworkImage(UserDetails().profilepic),
+                    icon: Icons.add,
+                    whiteIcon: true,
+                    iconHeight: 24.h,
+                    iconWidth: 24.w,
+                    iconOnPressed: () {},
                   ),
-
-                  Positioned(
-                    left: 237,
-                    top: 179,
-                    child: ClipOval(
-                      child: Container(
-                        color: Color(0xFF394AA3),
-                        height: 27,
-                        width: 27,
-                        child: Icon(Icons.add, color: Colors.white, size: 24),
-                      ),
-                    ),
-                  )
-                ]) /////////////////
-              ])
-            ],
-          ),
-        )),
+                ),
+              ]),
+            )
+          ]),
+        ),
       ),
+          ),
+        ),
     );
   }
 }

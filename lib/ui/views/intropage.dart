@@ -11,7 +11,7 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SafeArea(        
           child: Stack(children: [
         Container(
           padding: EdgeInsets.all(329.7),
@@ -32,7 +32,7 @@ class _IntroPageState extends State<IntroPage> {
         Container(
           padding: EdgeInsets.fromLTRB(58, 340, 0, 0),
           child: Text(
-            "Let' get started",
+            "Let's get started",
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.w100,
               fontSize: 40,
