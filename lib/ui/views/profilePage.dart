@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    print(UserDetails().email);
+    print(UserDetails().email + "email");
     // print(  UserDetails().email+"hell");
     // print(UserDetails().email + 'je;');
     // print(NetworkImage(UserDetails().profilepic));
@@ -80,10 +80,10 @@ class _ProfileState extends State<Profile> {
                   child: CircleAvatar(
                      backgroundColor: Colors.blueAccent,
                     // backgroundImage: AssetImage('assets/avatar.png'),
-                    backgroundImage: AssetImage('assets/avatar.png'),
+                    // backgroundImage: AssetImage('assets/background.png'),
 
 
-                    // backgroundImage: NetworkImage(UserDetails().profilepic),
+                    backgroundImage: NetworkImage(UserDetails().profilepic),
 
                     radius: 65,
                   ),
@@ -136,8 +136,8 @@ class _ProfileState extends State<Profile> {
                             child: Container(
                           padding: EdgeInsets.only(top: 18, left: 16),
                           child: Text(
-                            "ass",
-                            // UserDetails().name,
+                            // "ass",
+                            UserDetails().username,
 
                             style: TextStyle(
                               fontSize: 18,
@@ -188,8 +188,8 @@ class _ProfileState extends State<Profile> {
                             child: Container(
                           padding: EdgeInsets.only(top: 18, left: 16),
                           child: Text(
-                            // UserDetails().email,
-                            "hr",
+                            UserDetails().email,
+                            // "hr",
                             style: TextStyle(
                               fontSize: 18,
                             ),

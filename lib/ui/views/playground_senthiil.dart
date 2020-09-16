@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:compileanywhere/ui/models/usermodels.dart';
 import 'package:compileanywhere/ui/widgets/apicalls.dart';
 import 'package:compileanywhere/ui/widgets/input_pop.dart';
 import 'package:compileanywhere/ui/widgets/languages.dart';
@@ -14,16 +16,23 @@ import 'package:flutter/services.dart';
 import 'package:clipboard/clipboard.dart';
 
 class PlayGround extends StatefulWidget {
+  final DocumentSnapshot programId;
+
+  const PlayGround({Key key, this.programId}) : super(key: key);
   @override
-  _PlayGroundState createState() => _PlayGroundState();
+  _PlayGroundState createState() => _PlayGroundState(this.programId);
 }
 
 class _PlayGroundState extends State<PlayGround> {
+ 
+  final DocumentSnapshot programId;
+  _PlayGroundState(this.programId);
   TextEditingController _codeController = new TextEditingController();
   TextEditingController _inputController = new TextEditingController();
   String currentLang = "C#";
   String currentLangCode = "csharp";
   int currentLangVI = 3;
+ String initiall;
 
   Lang selectedLang;
   List<Lang> langs = [];
@@ -35,6 +44,7 @@ class _PlayGroundState extends State<PlayGround> {
   @override
   void initState() {
     super.initState();
+initiall='hello world';
     langs = Lang.getLang();
     for (Lang lang in langs) {
       if (lang.langName == "C#") {
@@ -45,6 +55,7 @@ class _PlayGroundState extends State<PlayGround> {
 
   setSelectedLang(Lang lang) {
     setState(() {
+    initiall=programId['name'];
       selectedLang = lang;
       currentLang = selectedLang.langName;
       currentLangCode = selectedLang.language;
@@ -106,7 +117,6 @@ class _PlayGroundState extends State<PlayGround> {
                 minLines: 1,
                 maxLines: 100,
                 decoration: new InputDecoration(
-                  
                     hintText:
                         '(Enter Here) Split multiple inputs into separate lines',
                     hintStyle:
@@ -281,6 +291,8 @@ class _PlayGroundState extends State<PlayGround> {
 
   @override
   Widget build(BuildContext context) {
+    print(programId.data);
+    print(programId.documentID);
     pr = ProgressDialog(
       context,
       type: ProgressDialogType.Normal,
@@ -335,14 +347,18 @@ class _PlayGroundState extends State<PlayGround> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8.h)),
-                  child: TextField(
+                  child: TextFormField(
+                    controller: _codeController,
+                    //  initialValue: "initiall",
+                    // initialValue: UserDetails().username,
+
                     cursorColor: Color(0xff333333),
                     style: GoogleFonts.sourceCodePro(
                       fontWeight: FontWeight.w400,
                       fontSize: ScreenUtil().setSp(14),
                       color: Color(0xff333333),
                     ),
-                    controller: _codeController,
+                    // controller: _codeController,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -351,12 +367,12 @@ class _PlayGroundState extends State<PlayGround> {
                       disabledBorder: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(
                           horizontal: 16.w, vertical: 16.h),
-                      hintText: "The CODE is copied in your Clipboard kindly paste it",
-                      hintStyle: GoogleFonts.sourceCodePro(
-                        fontWeight: FontWeight.w300,
-                        fontSize: ScreenUtil().setSp(12),
-                        color: Color(0xff333333),
-                      ),
+                      // hintText: "The CODE is copied in your Clipboard kindly paste it",
+                      // hintStyle: GoogleFonts.sourceCodePro(
+                      //   fontWeight: FontWeight.w300,
+                      //   fontSize: ScreenUtil().setSp(12),
+                      //   color: Color(0xff333333),
+                      // ),
                     ),
                     minLines: 1,
                     maxLengthEnforced: true,

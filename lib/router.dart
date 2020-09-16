@@ -11,6 +11,7 @@ import 'package:compileanywhere/ui/views/profilePage.dart';
 import 'package:compileanywhere/ui/views/setProfilePage.dart';
 import 'package:compileanywhere/ui/views/setupprofilepage.dart';
 import 'package:compileanywhere/ui/views/signuppage.dart';
+import 'package:compileanywhere/ui/widgets/imagepicker.dart';
 import 'package:flutter/material.dart';
 
 class Router {
@@ -38,6 +39,8 @@ class Router {
         return MaterialPageRoute(builder: (context) => PlayGround());
       case '/comments':
         return MaterialPageRoute(builder: (context) => Comments());
+         case '/picker':
+        return MaterialPageRoute(builder: (context) => ImagePickerr());
 
 
 

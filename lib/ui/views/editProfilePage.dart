@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:compileanywhere/ui/models/usermodels.dart';
 import 'package:compileanywhere/ui/widgets/avatarwithicon.dart';
 import 'package:compileanywhere/ui/widgets/localwidgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class EditProfile extends StatefulWidget {
@@ -14,6 +18,8 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
+   File sampleImage;
+  String downloadUrl;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _password, _confirmPassword, _username;
 
@@ -38,8 +44,116 @@ class _EditProfileState extends State<EditProfile> {
           print(error);
         });
       } catch (e) {}
+
+
+
+      print(sampleImage);
+      String imageName = UserDetails().uid + '.jpg';
+      final StorageReference firebaseStorageRef =
+          FirebaseStorage.instance.ref().child('Avatar/$imageName');
+      StorageUploadTask task = firebaseStorageRef.putFile(sampleImage);
+      StorageTaskSnapshot snapshotTask = await task.onComplete;
+      downloadUrl = await snapshotTask.ref.getDownloadURL();
     }
+    else{
+      downloadUrl=UserDetails().profilepic;
+    }
+     
+      UserUpdateInfo updateUser = UserUpdateInfo();
+   
+    UserDetails().user.updateProfile(updateUser);
+    Firestore.instance
+        .collection('users')
+        .document(UserDetails().uid)
+        .updateData(
+            {'profilepicurl': downloadUrl});
+    UserDetails().profilepic = downloadUrl;
+    // Navigator.pushReplacementNamed(context, '/lop');
+}
+
+      
+  Future getImageCam() async {
+    var tempImage = await ImagePicker().getImage(source: ImageSource.camera);
+
+    setState(() {
+      sampleImage = File(tempImage.path);
+      // imageUrl='uploaded';
+    });
   }
+
+  Future getImageGal() async {
+    var tempImage = await ImagePicker().getImage(source: ImageSource.gallery);
+
+    setState(() {
+      sampleImage = File(tempImage.path);
+      // imageUrl='uploaded';
+    });
+  }
+    
+
+
+
+
+  Future<void> _optionsDialogBox() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.blue,
+            shape: RoundedRectangleBorder(),
+            content: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Text(
+                      'Take a Picture',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    onTap: getImageCam,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(10.0),
+                  ),
+                  GestureDetector(
+                    child: Text(
+                      'Choose from Gallery',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    onTap: getImageGal,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  // Future getImageCam() async {
+  //   var tempImage = await ImagePicker().getImage(source: ImageSource.camera);
+
+  //   setState(() {
+  //     sampleImage = File(tempImage.path);
+  //     // imageUrl='uploaded';
+  //   });
+  // }
+
+  // Future getImageGal() async {
+  //   var tempImage = await ImagePicker().getImage(source: ImageSource.gallery);
+
+  //   setState(() {
+  //     sampleImage = File(tempImage.path);
+  //     // imageUrl='uploaded';
+  //   });
+  // }
+
+
+  
 
   double sideLength = 50;
   @override
@@ -256,7 +370,9 @@ class _EditProfileState extends State<EditProfile> {
                     whiteIcon: true,
                     iconHeight: 24.h,
                     iconWidth: 24.w,
-                    iconOnPressed: () {},
+                    iconOnPressed: () {
+                       _optionsDialogBox();
+                    },
                   ),
                 ),
               ]),

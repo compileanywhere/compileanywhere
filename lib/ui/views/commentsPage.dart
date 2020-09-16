@@ -32,7 +32,7 @@ class _CommentsState extends State<Comments> {
           'comments': _coments,
           'programId': this.programId
         });
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       } catch (e) {}
     }
   }

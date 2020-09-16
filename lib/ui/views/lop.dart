@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:compileanywhere/ui/models/usermodels.dart';
 import 'package:compileanywhere/ui/views/programview.dart';
@@ -23,20 +24,18 @@ class _ListofProgState extends State<ListofProg> {
 
   @override
   void initState() {
-      // setState(() {
-            // Timer(Duration(seconds: 5), checkAuthentication);
+    // setState(() {
+    // Timer(Duration(seconds: 5), checkAuthentication);
 
-      //  profilePicUrl='assets/avatar.png';
+    //  profilePicUrl='assets/avatar.png';
 
-      // });
+    // });
     super.initState();
     checkAuthentication();
-  // var future = new Future.delayed(const Duration(milliseconds: 10), checkAuthentication());
+    // var future = new Future.delayed(const Duration(milliseconds: 10), checkAuthentication());
 
     super.initState();
   }
-
- 
 
   checkAuthentication() {
     _auth.onAuthStateChanged.listen((user) async {
@@ -75,19 +74,18 @@ class _ListofProgState extends State<ListofProg> {
 
 // });
 
-
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(  
+        decoration: BoxDecoration(
             gradient: LinearGradient(
           colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         )),
         child: SingleChildScrollView(
-                  child: Column(children: [
+          child: Column(children: [
             // FittedBox(
             //   child: Image.asset('assets/background.png'),
             //   fit: BoxFit.fill,
@@ -137,12 +135,12 @@ class _ListofProgState extends State<ListofProg> {
                       Navigator.pushNamed(context, '/profile');
                     },
                     child:
-                    // CircleAvatarr(),
-                     CircleAvatar(
+                        // CircleAvatarr(),
+                        CircleAvatar(
                       foregroundColor: Colors.red,
 
-                       backgroundColor: Colors.blueAccent,
-                      // backgroundImage:NetworkImage(UserDetails().profilepic),
+                      // backgroundColor: Colors.blueAccent,
+                      backgroundImage: NetworkImage(UserDetails().profilepic),
                       // backgroundImage: new NetworkImage(UserDetails().profilepic),
                       radius: 22,
                     ),
@@ -150,103 +148,152 @@ class _ListofProgState extends State<ListofProg> {
                 ),
               ],
             ),
-      LimitedBox(
-              maxHeight: 300,
-              // maxWidth: 300,
-                        child: Expanded(
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-              print('clicked');
-                        },
-                        child: Container(
-              child: Image.asset('assets/sem_cards/LabCardSem301.png'),
-              width: 50,
-              height: 50, 
-                        ),
-                      ),
-                      Container(
-                        child: Image.asset('assets/sem_cards/LabCardSem302.png'),
-                        width: 0,
-                        height: 50,
-                      ),
-                      Container(
-                        child: Image.asset('assets/sem_cards/LabCardSem401.png'),
-                        width: 0,
-                        height: 50,
-                      ),
-                      Container(
-                        child: Image.asset('assets/sem_cards/LabCardSem402.png'),
-                        width: 0,
-                        height: 50,
-                      ),
-                      Container(
-                        child: Image.asset('assets/sem_cards/LabCardSem501.png'),
-                        width: 0,
-                        height: 50,
-                      ),
-                    ],
+
+            SizedBox(
+              height: 350,
+              width: 350.w,
+              child: CarouselSlider(
+                height: 200,
+                enlargeCenterPage: true,
+                autoPlay: false,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.fastOutSlowIn,
+                // enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                viewportFraction: 0.8,
+
+                items: [
+                  Container(
+                    height: 350,
+                    width: 300,
+                    // color: Colors.amber,
+                    margin: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      color: Colors.amberAccent,
+                      borderRadius: BorderRadius.circular(10),
+                      //   image:DecorationImage(image: AssetImage('assets/sem_cards/LabCardSem301.png'),fit:BoxFit.cover),
+                    ),
+                    child: Image.asset('assets/sem_cards/LabCardSem301.png'),
                   ),
-                ),
+                    Container(
+                    height: 350,
+                    width: 300,
+                    // color: Colors.amber,
+                    margin: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      color: Colors.amberAccent,
+                      borderRadius: BorderRadius.circular(10),
+                      //   image:DecorationImage(image: AssetImage('assets/sem_cards/LabCardSem301.png'),fit:BoxFit.cover),
+                    ),
+                    child: Image.asset('assets/sem_cards/LabCardSem302.png'),
+                  ),
+                    Container(
+                    height: 350,
+                    width: 300,
+                    // color: Colors.amber,
+                    margin: EdgeInsets.all(5.0),
+                    decoration: BoxDecoration(
+                      color: Colors.amberAccent,
+                      borderRadius: BorderRadius.circular(10),
+                      //   image:DecorationImage(image: AssetImage('assets/sem_cards/LabCardSem301.png'),fit:BoxFit.cover),
+                    ),
+                    child: Image.asset('assets/sem_cards/LabCardSem401.png'),
+                  ),
+                ],
+              ),
             ),
 
+            // LimitedBox(
+            //   maxHeight: 300,
+            //   // maxWidth: 300,
+            //   child: Expanded(
+            //     child: PageView(
+            //       scrollDirection: Axis.horizontal,
+            //       children: <Widget>[
+            //         GestureDetector(
+            //           onTap: () {
+            //            Navigator.pushNamed(context,'/picker');
+            //           },
+            //           child: Container(
+            //             child:
+            //                 Image.asset('assets/sem_cards/LabCardSem301.png'),
+            //             width: 50,
+            //             height: 50,
+            //           ),
+            //         ),
+            //         Container(
+            //           child: Image.asset('assets/sem_cards/LabCardSem302.png'),
+            //           width: 0,
+            //           height: 50,
+            //         ),
+            //         Container(
+            //           child: Image.asset('assets/sem_cards/LabCardSem401.png'),
+            //           width: 0,
+            //           height: 50,
+            //         ),
+            //         Container(
+            //           child: Image.asset('assets/sem_cards/LabCardSem402.png'),
+            //           width: 0,
+            //           height: 50,
+            //         ),
+            //         Container(
+            //           child: Image.asset('assets/sem_cards/LabCardSem501.png'),
+            //           width: 0,
+            //           height: 50,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+
             Padding(
-              padding:  EdgeInsets.only(right:218.h),
+              padding: EdgeInsets.only(right: 218.h),
               child: SizedBox(
-                          child: 
-                              Container(
-                                padding: EdgeInsets.only(left: 10, top: 10),
-                                child: Text(
-                                  'Programs',
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                               ),
+                child: Container(
+                  padding: EdgeInsets.only(left: 10, top: 10),
+                  child: Text(
+                    'Programs',
+                    style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
             ),
-                            SizedBox(
-                                  height: MediaQuery.of(context).size.height * 0.59,
-                                  width: MediaQuery.of(context).size.width * 0.9,
-                                  child: StreamBuilder(
-                                    stream: db
-                                        .collection('faculty')
-                                        .snapshots(),
-                                    builder: (context, snapshot) {
-                                      print(snapshot.data);
-                                      print("the data is printed");
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      }
-                                      return ListView.builder(
-                                        itemCount: snapshot.data.documents.length,
-                                        itemBuilder: (context, index) => GestureDetector(
-                                          onTap: () {
-                                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ProgramView(
-                                    document:
-                                        snapshot.data.documents[index],
-                                  )));
-                                          },
-                                          child: CustomCards(
-                                            title: snapshot.data.documents[index]['name'],
-                                            language: snapshot.data.documents[index]['dept'],
-                                            username: snapshot
-                              .data.documents[index]['popularity']
-                              .toString(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                         
-           
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.59,
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: StreamBuilder(
+                stream: db.collection('faculty').snapshots(),
+                builder: (context, snapshot) {
+                  // print(snapshot.data['name']);
+
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return ListView.builder(
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ProgramView(
+                                  document: snapshot.data.documents[index],
+                                )));
+                      },
+                      child: CustomCards(
+                        title: snapshot.data.documents[index]['name'],
+                        language: snapshot.data.documents[index]['dept'],
+                        username: snapshot.data.documents[index]['popularity']
+                            .toString(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ]),
         ),
       ),

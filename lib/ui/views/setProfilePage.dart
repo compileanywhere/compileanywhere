@@ -44,6 +44,7 @@ class _SetupProfilePagesState extends State<SetupProfilePages> {
         .document(UserDetails().uid)
         .updateData(
             {'name': name, 'username': username, 'profilepicurl': downloadUrl});
+            
     UserDetails().name = name;
     UserDetails().username = username;
     UserDetails().profilepic = downloadUrl;
@@ -95,6 +96,7 @@ class _SetupProfilePagesState extends State<SetupProfilePages> {
 
     setState(() {
       sampleImage = File(tempImage.path);
+      Navigator.pop(context);
       // imageUrl='uploaded';
     });
   }
@@ -104,6 +106,7 @@ class _SetupProfilePagesState extends State<SetupProfilePages> {
 
     setState(() {
       sampleImage = File(tempImage.path);
+      Navigator.pop(context);
       // imageUrl='uploaded';
     });
   }

@@ -1,5 +1,9 @@
+
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:compileanywhere/ui/views/commentsPage.dart';
+import 'package:compileanywhere/ui/views/playground_senthiil.dart';
 import 'package:compileanywhere/ui/widgets/localwidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +35,7 @@ class _ProgramViewState extends State<ProgramView> {
 
   @override
   Widget build(BuildContext context) {
+    print( this.document.documentID + 'ashikkkkk');
     ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return Scaffold(
       body: Container(
@@ -261,11 +266,17 @@ class _ProgramViewState extends State<ProgramView> {
                                 minWidth: 112.w,
                                 child: OutlineButton(
                                   onPressed: () {
-                                    final data = ClipboardData(
-                                      text: document['code'],
-                                    );
-                                    Clipboard.setData(data);
-                                    Navigator.pushNamed(context, '/playground');
+                                    // final data = ClipboardData(
+                                    //   text: document['code'],
+                                    // );
+                                    // Clipboard.setData(data);
+                                    // Navigator.pushNamed(context, '/playground');
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => PlayGround(
+                                                programId:this.document,
+                                                // programId:snapshot.data.documents[index]
+                                                )));
                                   },
                                   child: Text(
                                     'Run',
@@ -288,7 +299,9 @@ class _ProgramViewState extends State<ProgramView> {
                               ButtonTheme(
                                 minWidth: 112.w,
                                 child: OutlineButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                        _settingModalBottomSheet(context);
+                                  },
                                   child: Text(
                                     'YouTube',
                                     style: GoogleFonts.poppins(
@@ -511,4 +524,68 @@ class _ProgramViewState extends State<ProgramView> {
       ),
     );
   }
+  
+void _settingModalBottomSheet(context){
+    //  DocumentSnapshot document;
+    // _settingModalBottomSheet(document);
+    Firestore db = Firestore.instance;
+
+    showModalBottomSheet(
+      
+
+      context: context,
+      builder: (BuildContext bc){
+        // print("eeeeeeeeeeeeee");
+
+        print(document.documentID);
+          return  Expanded(
+              child:
+                  // _buildCommentList(),
+                  StreamBuilder(
+                stream: db
+                    .collection('comments')
+                    // .where('userName', isEqualTo: '1@username')
+                    .where('programId', isEqualTo: document.documentID)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  // if (snapshot.hasData) {
+                  //   snapshot.data.documents.forEach((doc) => {
+                  //         print('================== ' +
+                  //             doc['comments'] +
+                  //             ' ' +
+                  //             doc['userName'])
+                  //       });
+                  // }
+
+                  // print(snapshot.data);
+                  // print("the data is printed ==============="+ snapshot.data['avatar_link']);
+                  // print("the data is printed ==============="+ snapshot.data['userName']);
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  
+                  return ListView.builder(
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {},
+                      child: CustomCards(
+                        title: snapshot.data.documents[index]['comments'],
+                        language: snapshot.data.documents[index]['userName'],
+                        username: snapshot
+                            .data.documents[index]['creation_date']
+                            .toString(),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+      }
+    );
 }
+}
+
+
+
