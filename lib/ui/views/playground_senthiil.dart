@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:compileanywhere/ui/models/usermodels.dart';
 import 'package:compileanywhere/ui/widgets/apicalls.dart';
+import 'package:compileanywhere/ui/widgets/background_box.dart';
 import 'package:compileanywhere/ui/widgets/input_pop.dart';
 import 'package:compileanywhere/ui/widgets/languages.dart';
 import 'package:compileanywhere/ui/widgets/localwidgets.dart';
 import 'package:compileanywhere/ui/widgets/save_pop.dart';
 import 'package:compileanywhere/ui/widgets/show_error.dart';
+import 'package:compileanywhere/ui/widgets/transparentappbar.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -385,7 +387,7 @@ initiall='hello world';
           ),
         ),
       ),
-      bottomNavigationBar: ExpandableNotifier(
+      bottomNavigatioBar: ExpandableNotifier(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

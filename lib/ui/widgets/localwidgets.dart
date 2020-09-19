@@ -218,7 +218,7 @@ class _CustomCardsState extends State<CustomCards> {
               height: 20,
 
               decoration: BoxDecoration(
-                color: Color(0xFF7277F1),
+                color: Color(0xFF394aa3),
                 borderRadius: BorderRadius.all(Radius.circular(12)),
               ),
               // color: Color(0xFF394AA3),
@@ -259,111 +259,64 @@ class SizedBoxPadding extends StatelessWidget {
   }
 }
 
-
-class BackgroundBox extends StatelessWidget {
-  final Widget child, bottomSheet,bottomNavigationBar;
-  final PreferredSizeWidget appBar;
-  final bool resizeToAvoidBottomInset;
-
-  const BackgroundBox({Key key, this.bottomSheet, this.bottomNavigationBar, this.appBar, this.resizeToAvoidBottomInset, this.child}) : super(key: key);
-
   
 
+// class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
+//   const TransparentAppBar(
+//       {Key key, this.title, this.actionIcon, this.actionOnPressed})
+//       : super(key: key);
+//   @required
+//   final String title;
+//   final Function actionOnPressed;
+//   final IconData actionIcon;
 
-  @override
-  Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
-    return Container(
-      height: 640.h,
-      width: 360.w,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: ThemeColor().returnColor(),
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: SafeArea(
-          child: Scaffold(
-             resizeToAvoidBottomInset: true,
-        resizeToAvoidBottomPadding: false,
-        backgroundColor: Colors.transparent,
-        appBar: appBar,
-        body: child,
-        bottomSheet: bottomSheet,
-        bottomNavigationBar: bottomNavigationBar,
-      )),
-    );
-  }
-}
-
-// class ThemeColor {
-//   bool isDarkTheme = false;
-//   List<Color> returnColor() {
-//     if (isDarkTheme) {
-//     } else {
-//       return [Color(0xFFCD37FF), Color(0xFF40C9FF)];
-//     }
-//   }
-// }
-
-
-class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TransparentAppBar(
-      {Key key, this.title, this.actionIcon, this.actionOnPressed})
-      : super(key: key);
-  @required
-  final String title;
-  final Function actionOnPressed;
-  final IconData actionIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
-    return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      centerTitle: true,
-      leading: Padding(
-        padding: EdgeInsets.only(left: 8.w),
-        child: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-              size: 24.h,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
-      ),
+//   @override
+//   Widget build(BuildContext context) {
+//     ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
+//     return AppBar(
+//       backgroundColor: Colors.transparent,
+//       elevation: 0,
+//       centerTitle: true,
+//       leading: Padding(
+//         padding: EdgeInsets.only(left: 8.w),
+//         child: IconButton(
+//             icon: Icon(
+//               Icons.arrow_back_ios,
+//               color: Colors.white,
+//               size: 24.h,
+//             ),
+//             onPressed: () {
+//               Navigator.pop(context);
+//             }),
+//       ),
      
-      title: Text(
-        title,
-        overflow: TextOverflow.visible,
-        style: GoogleFonts.poppins(
-          fontSize: ScreenUtil().setSp(24),
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.only(right: 16.w),
-          child: IconButton(
-            icon: Icon(
-              actionIcon,
-              color: Colors.white,
-              size: 24.h,
-            ),
-            onPressed: actionOnPressed,
-          ),
-        )
-      ],
-    );
-  }
+//       title: Text(
+//         title,
+//         overflow: TextOverflow.visible,
+//         style: GoogleFonts.poppins(
+//           fontSize: ScreenUtil().setSp(24),
+//           fontWeight: FontWeight.w600,
+//         ),
+//       ),
+//       actions: [
+//         Padding(
+//           padding: EdgeInsets.only(right: 16.w),
+//           child: IconButton(
+//             icon: Icon(
+//               actionIcon,
+//               color: Colors.white,
+//               size: 24.h,
+//             ),
+//             onPressed: actionOnPressed,
+//           ),
+//         )
+//       ],
+//     );
+//   }
 
-  @override
-  Size get preferredSize => Size.fromHeight(56.h);
-}
+//   @override
+//   Size get preferredSize => Size.fromHeight(56.h);
+// }
 
 
 
