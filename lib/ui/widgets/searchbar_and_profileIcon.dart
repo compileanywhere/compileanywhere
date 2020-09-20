@@ -45,8 +45,9 @@ class _SearchBarAndNotificationState extends State<SearchBarAndNotification> {
                     Expanded(
                       child: TextField(
                         textAlignVertical: TextAlignVertical.center,
-                        style: Theme.of(context).textTheme.headline2.copyWith(
-                            color: Theme.of(context).colorScheme.secondary),
+                        style: GoogleFonts.poppins(
+                          fontSize: ScreenUtil().setSp(16),
+                        ),
                         autofocus: false,
                         controller: controller,
                         decoration: InputDecoration(
@@ -59,7 +60,7 @@ class _SearchBarAndNotificationState extends State<SearchBarAndNotification> {
                           hintStyle: GoogleFonts.poppins(
                               fontSize: ScreenUtil().setSp(16),
                               color: Color(0xff5254d8)),
-                          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 12.h),
+                          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 2.h),
                           suffixIcon: Icon(EvaIcons.search,
                               // color: Theme.of(context).iconTheme.color,
                               // size: Theme.of(context).iconTheme.size,
@@ -77,16 +78,21 @@ class _SearchBarAndNotificationState extends State<SearchBarAndNotification> {
             SizedBox(
               width: 32.w,
             ),
-            SizedBox(
-              width: 36.w,
-              height: 36.h,
-              child: CircleAvatar(
-                foregroundColor: Colors.red,
-                backgroundImage: AssetImage('assets/avatar.png'),
-                // backgroundColor: Colors.blueAccent,
-                // backgroundImage: NetworkImage(profilePicUrl),
-                // backgroundImage: new NetworkImage(UserDetails().profilepic),
-                radius: 22,
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context,'/profile');
+              },
+                          child: SizedBox(
+                width: 36.w,
+                height: 36.h,
+                child: CircleAvatar(
+                  foregroundColor: Colors.red,
+                  backgroundImage: AssetImage('assets/avatar.png'),
+                  // backgroundColor: Colors.blueAccent,
+                  // backgroundImage: NetworkImage(profilePicUrl),
+                  // backgroundImage: new NetworkImage(UserDetails().profilepic),
+                  radius: 22,
+                ),
               ),
             ),
             SizedBox(

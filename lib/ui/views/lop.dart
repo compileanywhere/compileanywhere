@@ -51,7 +51,7 @@ class _ListofProgState extends State<ListofProg> {
     _auth.onAuthStateChanged.listen((user) async {
       if (user == null) {
         UserDetails().logout();
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
         Navigator.pushReplacementNamed(context, '/intro');
       }
     });
@@ -73,305 +73,181 @@ class _ListofProgState extends State<ListofProg> {
 
     return BackgroundBox(
       appBar: SearchBarAndNotification(controller: _searchController,),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        color: Color(0xff4740e8),
-        // decoration: BoxDecoration(
-        //     gradient: LinearGradient(
-        //   colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)],
-        //   begin: Alignment.topCenter,
-        //   end: Alignment.bottomCenter,
-        // ),
+      child: SingleChildScrollView(
+        child: Column(children: [
+     
 
-        // ),
-        child: SingleChildScrollView(
-          child: Column(children: [
-            // FittedBox(
-            //   child: Image.asset('assets/background.png'),
-            //   fit: BoxFit.fill,
-            // ),
-
-            // Stack(
-            //   children: <Widget>[
-            //     Padding(
-            //       padding: EdgeInsets.only(
-            //         right: 90.0, top: 55,
-            //         // bottom:10
-            //       ),
-            //       child: Container(
-            //         decoration: BoxDecoration(
-            //           color: Colors.white,
-            //           borderRadius: BorderRadius.only(
-            //               bottomRight: Radius.circular(36),
-            //               topRight: Radius.circular(36)),
-            //         ),
-            //         child: TextField(
-            //           decoration: InputDecoration(
-            //             hintStyle: GoogleFonts.poppins(
-            //               fontWeight: FontWeight.w400,
-            //               color: Color(0xFF5254D8),
-            //             ),
-            //             hintText: 'Search',
-            //             suffixIcon: Icon(
-            //               Icons.search,
-            //               color: Color(0xFF5254D8),
-            //             ),
-            //             border: InputBorder.none,
-            //             contentPadding: EdgeInsets.only(
-            //               left: 20,
-            //               top: 14,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //     Container(
-            //       padding: EdgeInsets.only(
-            //         top: 60,
-            //         left: 360,
-            //       ),
-            //       child: GestureDetector(
-            //         onTap: () {
-            //           Navigator.pushNamed(context, '/profile');
-            //         },
-            //         child:
-            //             // CircleAvatarr(),
-            //             //     CircleAvatar(
-            //             //   foregroundColor: Colors.red,
-
-            //             //   // backgroundColor: Colors.blueAccent,
-            //             //   // backgroundImage: NetworkImage(profilePicUrl),
-            //             //   backgroundImage: new NetworkImage(UserDetails().profilepic),
-            //             //   radius: 22,
-            //             // ),
-            //             profilee(),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-
-            SizedBox(
-              height: 200.h,
-              width: 360.w,
-              child: CarouselSlider(
-                height: 170.h,
-                enlargeCenterPage: true,
-                // autoPlay: true,
-                aspectRatio: 16 / 9,
-                // autoPlayCurve: Curves.fastOutSlowIn,
-                // enableInfiniteScroll: true,
-                // autoPlayAnimationDuration: Duration(milliseconds: 800),
-                // viewportFraction: 0.8,
-                items: [
-                  Container(
-                
-                    margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem301.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),
-                  Container(
-                    // color: Colors.amber,
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                  decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem302.png'),
+          SizedBox(
+            height: 200.h,
+            width: 360.w,
+            child: CarouselSlider(
+              height: 170.h,
+              enlargeCenterPage: true,
+              // autoPlay: true,
+              aspectRatio: 16 / 9,
+              // autoPlayCurve: Curves.fastOutSlowIn,
+              // enableInfiniteScroll: true,
+              // autoPlayAnimationDuration: Duration(milliseconds: 800),
+              // viewportFraction: 0.8,
+              items: [
+                Container(
+              
+                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem301.png'),
                         fit: BoxFit.fill),
-                    ),
                   ),
-                  Container(
-                     margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem401.png'),
-                          fit: BoxFit.fill),
-                    ),
+                ),
+                Container(
+                  // color: Colors.amber,
+  margin: EdgeInsets.only(top:20.0.h,left:5.w),                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem302.png'),
+                      fit: BoxFit.fill),
                   ),
-                  Container(
+                ),
+                Container(
+                   margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem401.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem402.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),Container(
+                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem501.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),Container(
                     margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem402.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-                    margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem501.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-                      margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem502.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-                      margin: EdgeInsets.only(top:20.0.h,left:5.w),
-                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem601.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem602.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem701.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
-                      // color: Colors.amberAccent,
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/sem_cards/LabCardSem702.png'),
-                          fit: BoxFit.fill),
-                    ),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem502.png'),
+                        fit: BoxFit.fill),
                   ),
-                ],
-              ),
+                ),Container(
+                    margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem601.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),Container(
+  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem602.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),Container(
+  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem701.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),Container(
+  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image:
+                            AssetImage('assets/sem_cards/LabCardSem702.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+              ],
             ),
+          ),
 
-            // LimitedBox(
-            //   maxHeight: 300,
-            //   // maxWidth: 300,
-            //   child: Expanded(
-            //     child: PageView(
-            //       scrollDirection: Axis.horizontal,
-            //       children: <Widget>[
-            //         GestureDetector(
-            //           onTap: () {
-            //            Navigator.pushNamed(context,'/picker');
-            //           },
-            //           child: Container(
-            //             child:
-            //                 Image.asset('assets/sem_cards/LabCardSem301.png'),
-            //             width: 50,
-            //             height: 50,
-            //           ),
-            //         ),
-            //         Container(
-            //           child: Image.asset('assets/sem_cards/LabCardSem302.png'),
-            //           width: 0,
-            //           height: 50,
-            //         ),
-            //         Container(
-            //           child: Image.asset('assets/sem_cards/LabCardSem401.png'),
-            //           width: 0,
-            //           height: 50,
-            //         ),
-            //         Container(
-            //           child: Image.asset('assets/sem_cards/LabCardSem402.png'),
-            //           width: 0,
-            //           height: 50,
-            //         ),
-            //         Container(
-            //           child: Image.asset('assets/sem_cards/LabCardSem501.png'),
-            //           width: 0,
-            //           height: 50,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // SizedBoxPadding(),
-            Padding(
-              padding: EdgeInsets.only(left: 16.w, top: 20.h),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Programs',
-                  style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
+        
+          Padding(
+            padding: EdgeInsets.only(left: 16.w, top: 20.h),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Programs',
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  color: Colors.white,
                 ),
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.59,
-              width: MediaQuery.of(context).size.width * 0.9,
-              child: StreamBuilder(
-                stream: db.collection('faculty').snapshots(),
-                builder: (context, snapshot) {
-                  // print(snapshot.data['name']);
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.59,
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: StreamBuilder(
+              stream: db.collection('faculty').snapshots(),
+              builder: (context, snapshot) {
+                // print(snapshot.data['name']);
 
-                  if (!snapshot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  return Scrollbar(
-                    // isAlwaysShown: true,
-                    // controller: controller,
-                    // labelTextBuilder: (offset)=>Text('${offset.floor()}'),
-                    // backgroundColor:Colors.white,
-                    // controller: controller,
-                    // isAlwaysShown: false,
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return Scrollbar(
+                  
 
-                    //  alwaysVisibleScrollThumb: true,
-
-                    child: ListView.builder(
-                      itemCount: snapshot.data.documents.length,
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => ProgramView(
-                                    document: snapshot.data.documents[index],
-                                  )));
-                        },
-                        child: CustomCards(
-                          title: snapshot.data.documents[index]['name'],
-                          language: snapshot.data.documents[index]['dept'],
-                          username: snapshot.data.documents[index]['popularity']
-                              .toString(),
-                        ),
+                  child: ListView.builder(
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => ProgramView(
+                                  document: snapshot.data.documents[index],
+                                )));
+                      },
+                      child: CustomCards(
+                        title: snapshot.data.documents[index]['name'],
+                        language: snapshot.data.documents[index]['dept'],
+                        username: snapshot.data.documents[index]['popularity']
+                            .toString(),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-          ]),
-        ),
+          ),
+        ]),
       ),
     );
   }
@@ -424,13 +300,18 @@ void see() {
 }
 
 Widget profilee() {
-  return CircleAvatar(
-    foregroundColor: Colors.red,
-    backgroundImage: AssetImage('assets/avatar.png'),
-    // backgroundColor: Colors.blueAccent,
-    // backgroundImage: NetworkImage(profilePicUrl),
-    // backgroundImage: new NetworkImage(UserDetails().profilepic),
-    radius: 22,
+  return GestureDetector(
+    onTap:(){ 
+    //  Navigator.pushNamed(context,'/profile');
+      },
+      child: CircleAvatar(
+      foregroundColor: Colors.red,
+      backgroundImage: AssetImage('assets/avatar.png'),
+      // backgroundColor: Colors.blueAccent,
+      // backgroundImage: NetworkImage(profilePicUrl),
+      // backgroundImage: new NetworkImage(UserDetails().profilepic),
+      radius: 22,
+    ),
   );
 }
 

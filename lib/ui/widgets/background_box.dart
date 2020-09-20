@@ -17,17 +17,15 @@ class BackgroundBox extends StatelessWidget {
     return Container(
       height: 640.h,
       width: 360.w,
-      color: Color(0xff4740e8),
-      // decoration: BoxDecoration(
-      //   gradient: LinearGradient(
-      //     colors: [
-      //       Theme.of(context).colorScheme.primaryVariant,
-      //       Theme.of(context).colorScheme.secondaryVariant
-      //     ],
-      //     begin: Alignment.topCenter,
-      //     end: Alignment.bottomCenter,
-      //   ),
-      // ),
+    
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+                       colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)],
+
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
+      ),
       child: SafeArea(
           child: Scaffold(
             floatingActionButton: floatingActionButton,

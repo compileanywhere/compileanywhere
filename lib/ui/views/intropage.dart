@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:compileanywhere/ui/widgets/localwidgets.dart';
 
@@ -21,8 +22,9 @@ class _IntroPageState extends State<IntroPage> {
                   end: Alignment.bottomCenter,
                   colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)])),
         ),
-        Padding(
+                  Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 10, 290),
+          
           child: Container(
             decoration: new BoxDecoration(
                 image:

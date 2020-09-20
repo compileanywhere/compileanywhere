@@ -26,7 +26,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    print(UserDetails().email + "email");
+    // print(UserDetails().email + "email");
     // print(  UserDetails().email+"hell");
     // print(UserDetails().email + 'je;');
     // print(NetworkImage(UserDetails().profilepic));
@@ -46,8 +46,8 @@ class _ProfileState extends State<Profile> {
               children: <Widget>[
                 Stack(children: [
                   Container(
-                    width: 500,
-                    padding: EdgeInsets.only(top: 40, left: 150),
+                    width: 500.w,
+                    padding: EdgeInsets.only(top: 35.h, left: 135.w),
                     child: Text(
                       'Profile',
                       style: GoogleFonts.poppins(
@@ -59,8 +59,8 @@ class _ProfileState extends State<Profile> {
                   ),
                   Container(
                     child: Positioned(
-                      top: 41,
-                      right: 355,
+                      top: 38.h,
+                      right: 305.w,
                       child: IconButton(
                         color: Colors.white,
                         iconSize: 27,
@@ -76,7 +76,7 @@ class _ProfileState extends State<Profile> {
                   )
                 ]),
                 Container(
-                  padding: EdgeInsets.only(top: 30),
+                  padding: EdgeInsets.only(top: 30.h),
                   child: CircleAvatar(
                      backgroundColor: Colors.blueAccent,
                     // backgroundImage: AssetImage('assets/avatar.png'),
@@ -85,7 +85,7 @@ class _ProfileState extends State<Profile> {
 
                     backgroundImage: NetworkImage(UserDetails().profilepic),
 
-                    radius: 65,
+                    radius: ScreenUtil().setSp(55),
                   ),
                   // Avatar(
                   //   radius: 65,
@@ -100,13 +100,13 @@ class _ProfileState extends State<Profile> {
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w400,
-                        fontSize: 20,
+                        fontSize: ScreenUtil().setSp(17),
                         color: Colors.white,
                       ),
                     ),
                   ),
                   Positioned(
-                    left: 50,
+                    left: 46.w,
                     top: 43.h,
                     child: FlatButton(
                       // color: Colors.transparent,
@@ -118,7 +118,7 @@ class _ProfileState extends State<Profile> {
                       child: Text(
                         'edit',
                         style: TextStyle(
-                          fontSize: 17,
+                          fontSize: ScreenUtil().setSp(15),
                           color: Colors.white,
                         ),
                       ),
@@ -128,31 +128,31 @@ class _ProfileState extends State<Profile> {
                 Stack(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.only(top: 22),
+                      padding: EdgeInsets.only(top: 22.h),
                       child: SizedBox(
                         height: 50.h,
-                        width: 370,
+                        width: 330.w,
                         child: Card(
                             child: Container(
-                          padding: EdgeInsets.only(top: 18, left: 16),
+                          padding: EdgeInsets.only(top: 12.h, left: 16.w),
                           child: Text(
                             // "ass",
                             UserDetails().username,
 
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: ScreenUtil().setSp(15),
                             ),
                           ),
                         )),
                       ),
                     ),
                     Positioned(
-                      left: 12,
-                      top: 14,
+                      left: 12.w,
+                      top: 14.h,
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
-                        height: 23,
-                        width: 93,
+                        height: 19.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Color(0xFF394AA3),
@@ -160,14 +160,14 @@ class _ProfileState extends State<Profile> {
                         child: Column(children: [
                           Container(
                             padding: EdgeInsets.only(
-                              right: 5,
-                              top: 3,
+                              right: 5.w,
+                              top: 3.h,
                             ),
                             child: Text(
                               'Username',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 14,
+                                fontSize:ScreenUtil().setSp(12),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -186,24 +186,24 @@ class _ProfileState extends State<Profile> {
                         width: 370,
                         child: Card(
                             child: Container(
-                          padding: EdgeInsets.only(top: 18, left: 16),
+                          padding: EdgeInsets.only(top: 18.h, left: 16.w),
                           child: Text(
                             UserDetails().email,
                             // "hr",
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: ScreenUtil().setSp(15),
                             ),
                           ),
                         )),
                       ),
                     ),
                     Positioned(
-                      left: 12,
+                      left: 12.w,
                       top: 30.h,
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
-                        height: 23,
-                        width: 93,
+                      height: 19.h,
+                        width: 85.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: Color(0xFF394AA3),
@@ -211,8 +211,8 @@ class _ProfileState extends State<Profile> {
                         child: Column(children: [
                           Container(
                             padding: EdgeInsets.only(
-                              right: 25,
-                              top: 1,
+                              right: 25.w,
+                              top: 2.h,
                             ),
                             child: Text(
                               'Email',
