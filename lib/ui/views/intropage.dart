@@ -15,15 +15,15 @@ class _IntroPageState extends State<IntroPage> {
       body: SafeArea(        
           child: Stack(children: [
         Container(
-          padding: EdgeInsets.all(329.7),
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [Color(0xFF5254D8), Color(0xFF1DA1F2)])),
         ),
+      
                   Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 10, 290),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 240.h),
           
           child: Container(
             decoration: new BoxDecoration(
@@ -32,7 +32,7 @@ class _IntroPageState extends State<IntroPage> {
           ),
         ),
         Container(
-          padding: EdgeInsets.fromLTRB(58, 340, 0, 0),
+          padding: EdgeInsets.fromLTRB(42.w, 335.h, 0, 0),
           child: Text(
             "Let's get started",
             style: GoogleFonts.poppins(
@@ -43,7 +43,7 @@ class _IntroPageState extends State<IntroPage> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(92, 490, 0, 10),
+          padding: EdgeInsets.fromLTRB(74.w, 460.h, 0, 10.h),
           child: OutlineButton(
             padding: EdgeInsets.fromLTRB(88, 8, 88, 8),
             shape: RoundedRectangleBorder(
@@ -67,7 +67,7 @@ class _IntroPageState extends State<IntroPage> {
           ),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(92, 552, 0, 10),
+          padding: EdgeInsets.fromLTRB(74.w, 510.h, 0, 10.h),
           child: RaisedButton(
             color: Colors.white,
             padding: EdgeInsets.fromLTRB(88, 8, 88, 8),
@@ -86,7 +86,10 @@ class _IntroPageState extends State<IntroPage> {
             ),
           ),
         ),
-        College(),
+        Positioned(
+          top:600.h,left:63.w,
+          child: College(),
+        ),
       ])),
     );
   }

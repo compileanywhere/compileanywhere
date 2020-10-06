@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:draggable_scrollbar/draggable_scrollbar.dart';
 
 class ListofProg extends StatefulWidget {
   final ScrollController controller;
@@ -63,10 +64,10 @@ class _ListofProgState extends State<ListofProg> {
   // String location =await UserDetails().profilepic;
 
   TextEditingController _searchController = new TextEditingController();
+  ScrollController _rrectController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     setState(()  {
       Timer(Duration(seconds: 5), () => profilePicUrl = UserDetails().profilepic());
     });
@@ -223,10 +224,11 @@ class _ListofProgState extends State<ListofProg> {
                     child: CircularProgressIndicator(),
                   );
                 }
-                return Scrollbar(
-                  
-
-                  child: ListView.builder(
+                return DraggableScrollbar.rrect(
+                     heightScrollThumb: 70,
+      controller: _rrectController,
+      // labelTextBuilder: (offset) => Text("${offset.floor()}"),
+                                  child: ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
@@ -334,3 +336,7 @@ Widget profilee() {
       
 //   );
 // }
+
+
+///Divya's code:
+///

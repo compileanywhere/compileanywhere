@@ -9,6 +9,7 @@ import 'package:compileanywhere/ui/views/lop.dart';
 import 'package:compileanywhere/ui/views/playground_senthiil.dart';
 import 'package:compileanywhere/ui/views/profilePage.dart';
 import 'package:compileanywhere/ui/views/setProfilePage.dart';
+import 'package:compileanywhere/ui/views/settings.dart';
 import 'package:compileanywhere/ui/views/setupprofilepage.dart';
 import 'package:compileanywhere/ui/views/signuppage.dart';
 import 'package:compileanywhere/ui/widgets/imagepicker.dart';
@@ -41,6 +42,8 @@ class Router {
         return MaterialPageRoute(builder: (context) => Comments());
          case '/picker':
         return MaterialPageRoute(builder: (context) => ImagePickerr());
+         case '/settings':
+        return MaterialPageRoute(builder: (context) => Settings());
 
 
 

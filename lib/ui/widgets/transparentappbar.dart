@@ -34,7 +34,7 @@ class TransparentAppBar extends StatelessWidget implements PreferredSizeWidget {
         // overflow: TextOverflow.visible,
          overflow: TextOverflow.visible,
         style: GoogleFonts.poppins(
-          fontSize: ScreenUtil().setSp(24),
+          fontSize: ScreenUtil().setSp(25),
           fontWeight: FontWeight.w600,
         ),
       

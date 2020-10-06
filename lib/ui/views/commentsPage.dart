@@ -63,7 +63,6 @@ class _CommentsState extends State<Comments> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
 
     // db.collection("çomments").document("comments").snapshots().map((event) => {
     //       print('Jahn :::::::::::' + event.documentID),

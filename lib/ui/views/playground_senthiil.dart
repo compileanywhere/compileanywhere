@@ -311,7 +311,6 @@ initiall='hello world';
       messageTextStyle: GoogleFonts.poppins(
           fontSize: 30, color: Colors.black, fontWeight: FontWeight.w500),
     );
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
 
     return BackgroundBox(
       appBar: TransparentAppBar(

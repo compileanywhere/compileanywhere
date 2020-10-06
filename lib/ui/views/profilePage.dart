@@ -30,7 +30,6 @@ class _ProfileState extends State<Profile> {
     // print(  UserDetails().email+"hell");
     // print(UserDetails().email + 'je;');
     // print(NetworkImage(UserDetails().profilepic));
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -73,17 +72,27 @@ class _ProfileState extends State<Profile> {
                         ),
                       ),
                     ),
+                  ),
+                  Container(
+                    child: Positioned(
+                      top:36.h,
+                      left:300.w,
+                                        child: IconButton(
+                        onPressed:(){ Navigator.popAndPushNamed(context, '/settings');},
+                        icon:Icon(Icons.settings,color: Colors.white,size:  ScreenUtil().setSp(25),)),
+                    ),
                   )
                 ]),
                 Container(
                   padding: EdgeInsets.only(top: 30.h),
                   child: CircleAvatar(
-                     backgroundColor: Colors.blueAccent,
+                    backgroundColor: Colors.blueAccent,
                     // backgroundImage: AssetImage('assets/avatar.png'),
                     // backgroundImage: AssetImage('assets/background.png'),
 
-
-                    backgroundImage: NetworkImage(UserDetails().profilepic),
+                    backgroundImage: UserDetails().profilepic == null
+                        ? AssetImage('assets/avatar.png')
+                        : NetworkImage(UserDetails().profilepic),
 
                     radius: ScreenUtil().setSp(55),
                   ),
@@ -92,9 +101,8 @@ class _ProfileState extends State<Profile> {
                   // ),
                 ),
                 Stack(children: [
-                 
                   Container(
-                    padding: EdgeInsets.only(top: 53.h, right: 270.w),
+                    padding: EdgeInsets.only(top: 33.h, right: 260.w),
                     child: Text(
                       'General',
                       style: TextStyle(
@@ -106,14 +114,13 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                   Positioned(
-                    left: 46.w,
-                    top: 43.h,
+                    left: 56.w,
+                    top: 23.2.h,
                     child: FlatButton(
                       // color: Colors.transparent,
                       //padding: EdgeInsets.fromLTRB(2, 20, 2, 2),
                       onPressed: () {
-                        Navigator.pushNamed(
-                            context, '/editprofile');
+                        Navigator.pushNamed(context, '/editprofile');
                       },
                       child: Text(
                         'edit',
@@ -136,8 +143,10 @@ class _ProfileState extends State<Profile> {
                             child: Container(
                           padding: EdgeInsets.only(top: 12.h, left: 16.w),
                           child: Text(
-                            // "ass",
-                            UserDetails().username,
+                            "ass",
+                            // UserDetails().username == null
+                            //     ? Text('No username')
+                            //     : UserDetails().username,
 
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(15),
@@ -167,7 +176,7 @@ class _ProfileState extends State<Profile> {
                               'Username',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize:ScreenUtil().setSp(12),
+                                fontSize: ScreenUtil().setSp(12),
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -187,9 +196,11 @@ class _ProfileState extends State<Profile> {
                         child: Card(
                             child: Container(
                           padding: EdgeInsets.only(top: 18.h, left: 16.w),
-                          child: Text(
-                            UserDetails().email,
-                            // "hr",
+                          child: new Text(
+                            // UserDetails().email == null
+                                // ? Text('No email')
+                                // : UserDetails().email, 
+                                "hr",
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(15),
                             ),
@@ -202,7 +213,7 @@ class _ProfileState extends State<Profile> {
                       top: 30.h,
                       child: AnimatedContainer(
                         duration: Duration(milliseconds: 300),
-                      height: 19.h,
+                        height: 19.h,
                         width: 85.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -228,10 +239,61 @@ class _ProfileState extends State<Profile> {
                     ),
                   ],
                 ),
+                  Stack(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(top: 22.h),
+                      child: SizedBox(
+                        height: 50.h,
+                        width: 330.w,
+                        child: Card(
+                            child: Container(
+                          padding: EdgeInsets.only(top: 12.h, left: 16.w),
+                          child:  Text('Sai Ram College',
+                                
+
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(15),
+                            ),
+                          ),
+                        )),
+                      ),
+                    ),
+                    Positioned(
+                      left: 12.w,
+                      top: 14.h,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 300),
+                        height: 19.h,
+                        width: 85.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color(0xFF394AA3),
+                        ),
+                        child: Column(children: [
+                          Container(
+                            padding: EdgeInsets.only(
+                              right: 5.w,
+                              top: 3.h,
+                            ),
+                            child: Text(
+                              'College',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil().setSp(12),
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ),
+                  ],
+                ),
                 Container(
                   padding: EdgeInsets.only(
                     left: 230,
-                    top: 80.h,
+                    top: 70.h,
                   ),
                   child: RaisedButton(
                     color: Colors.white,
@@ -242,14 +304,19 @@ class _ProfileState extends State<Profile> {
                       'Sign Out',
                       style: TextStyle(
                         fontSize: 17,
-                        color: Colors.red,
+                        color: Color(0xff5254d8),
                       ),
                     ),
                     onPressed: () {
                       _auth.signOut();
                     },
                   ),
-                )
+                ),
+                // RaisedButton(
+                //     onPressed: () {
+                //       Navigator.pushNamed(context, '/settings');
+                //     },
+                //     child: Text("click me"))
               ],
             )),
       ),

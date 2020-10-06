@@ -6,16 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class College extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(80, 658, 0, 10),
-      child: Container(
-        child: Text(
-          'SRI SAI RAM COLLEGE OF ENGINEERING',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.w500,
-            //fontSize: 17,
-            color: Colors.white,
-          ),
+    return Container(
+      child: Text(
+        'SRI SAI RAM COLLEGE OF ENGINEERING',
+        style: GoogleFonts.poppins(
+          fontWeight: FontWeight.w500,
+          //fontSize: 17,
+          color: Colors.white,
         ),
       ),
     );
@@ -252,7 +249,6 @@ class ThemeColor {
 class SizedBoxPadding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return SizedBox(
       height: 16.h,
     );
@@ -326,7 +322,6 @@ class SizedBoxPadding extends StatelessWidget {
 class OrLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return Row(
       children: <Widget>[
         Expanded(

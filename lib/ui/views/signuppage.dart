@@ -36,23 +36,23 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   signup() async {
+    
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       if (_password == _confirmPassword) {
         try {
+      
           FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
                   email: _email, password: _password))
               .user;
-              if(user!=null){
-                UserDetails().updateUser('', '', _email, user.uid, '',user);
-          Firestore.instance.collection('users').document(user.uid).setData({
-            'email':_email,
-         
-          
-          });
-              }
+          if (user != null) {
+                print('its gtntg saveddddddddd');
+            UserDetails().updateUser('', '', _email, user.uid, '', user);
+            Firestore.instance.collection('users').document(user.uid).setData({
+              'email': _email,
+            });
+          }
         } catch (e) {
-
           showError(e.message);
         }
       } else {
@@ -82,7 +82,6 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return BackgroundBox(
       resizeToAvoidBottomInset: false,
       appBar: TransparentAppBar(
@@ -218,33 +217,25 @@ class _SignupPageState extends State<SignupPage> {
             Align(
               alignment: Alignment.centerRight,
               child: SizedBox(
-                width: 112.w,
+                width: 117.w,
                 height: 32.h,
                 child: FlatButton(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(36.h)),
-                  onPressed:  signup,
+                  onPressed: signup,
                   child: Text('Next',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF7277F1),
-                        fontSize: ScreenUtil().setSp(14),
+                        color: Color(0xFF5254d8),
+                        fontSize: ScreenUtil().setSp(16),
                       )),
                 ),
               ),
             ),
-            SizedBox(
-              height: 48.h,
-            ),
-            OrLine(),
-            SizedBox(
-              height: 48.h,
-            ),
-            CustomGoogleButton(
-              text: 'Sign up with Google',
-              onPressed: () {},
-            )
+            Padding(
+                padding: EdgeInsets.fromLTRB(10.w, 283.h, 0, 0),
+                child: College()),
           ],
         ),
       ),

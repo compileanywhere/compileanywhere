@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 inputPop(TextEditingController controller, Function onPressed,
     BuildContext context) {
-  ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
   showDialog(
     context: context,
     builder: (BuildContext context) {

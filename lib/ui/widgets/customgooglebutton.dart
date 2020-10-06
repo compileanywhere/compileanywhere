@@ -12,7 +12,6 @@ class CustomGoogleButton extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return SizedBox(
       width: 178.w,
       height: 36.h,

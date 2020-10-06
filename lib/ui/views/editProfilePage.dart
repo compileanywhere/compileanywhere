@@ -160,7 +160,6 @@ class _EditProfileState extends State<EditProfile> {
   double sideLength = 50;
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return Padding(
       padding: EdgeInsets.only(top:8.h),
           child: BackgroundBox(
@@ -203,7 +202,7 @@ class _EditProfileState extends State<EditProfile> {
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
                                   fontSize: ScreenUtil().setSp(14),
-                                  color: Color(0xFF7277F1),
+                                  color: Color(0xFF5254d8),
                                 ),
                               ),
                             ),
@@ -211,7 +210,7 @@ class _EditProfileState extends State<EditProfile> {
                             TextFormField(
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF7277F1),
+                                color: Color(0xFF5254d8),
                                 fontSize: ScreenUtil().setSp(14),
                               ),
                               validator: (input) {
@@ -221,7 +220,7 @@ class _EditProfileState extends State<EditProfile> {
                               },
                               onSaved: (input) => _username = input,
                               initialValue: UserDetails().username,
-                              cursorColor: Color(0xFF7277F1),
+                              cursorColor: Color(0xFF5254d8),
                               decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
@@ -237,7 +236,7 @@ class _EditProfileState extends State<EditProfile> {
                                 ),
                                 hintStyle: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w200,
-                                  color: Color(0xFF7277F1),
+                                  color: Color(0xFF5254d8),
                                   fontSize: ScreenUtil().setSp(12),
                                 ),
                                 contentPadding: EdgeInsets.only(
@@ -255,14 +254,14 @@ class _EditProfileState extends State<EditProfile> {
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
                                   fontSize: ScreenUtil().setSp(14),
-                                  color: Color(0xFF7277F1),
+                                  color: Color(0xFF5254d8),
                                 ),
                               ),
                             ),
                             TextFormField(
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF7277F1),
+                                color: Color(0xFF5254d8),
                                 fontSize: ScreenUtil().setSp(14),
                               ),
                               validator: (input) {
@@ -271,17 +270,17 @@ class _EditProfileState extends State<EditProfile> {
                                 }
                               },
                               onSaved: (input) => _password = input,
-                              cursorColor: Color(0xFF7277F1),
+                              cursorColor: Color(0xFF5254d8),
                               decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xff7277F1),
+                                      color: Color(0xFF5254d8),
                                       width: 0.0,
                                     ),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xff7277F1),
+                                      color: Color(0xFF5254d8),
                                       width: 1.0,
                                     ),
                                   ),
@@ -291,7 +290,7 @@ class _EditProfileState extends State<EditProfile> {
                                   hintText: 'new password',
                                   hintStyle: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w200,
-                                    color: Color(0xFF7277F1),
+                                    color: Color(0xFF5254d8),
                                     fontSize: ScreenUtil().setSp(12),
                                   )),
                             ),
@@ -299,7 +298,7 @@ class _EditProfileState extends State<EditProfile> {
                             TextFormField(
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF7277F1),
+                                color: Color(0xFF5254d8),
                                 fontSize: ScreenUtil().setSp(14),
                               ),
                               validator: (input) {
@@ -311,17 +310,17 @@ class _EditProfileState extends State<EditProfile> {
                                 }
                               },
                               onSaved: (input) => _confirmPassword = input,
-                              cursorColor: Color(0xFF7277F1),
+                              cursorColor: Color(0xFF5254d8),
                               decoration: InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xff7277F1),
+                                      color: Color(0xFF5254d8),
                                       width: 0.0,
                                     ),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0xff7277F1),
+                                      color: Color(0xFF5254d8),
                                       width: 1.0,
                                     ),
                                   ),
@@ -331,7 +330,7 @@ class _EditProfileState extends State<EditProfile> {
                                   hintText: 'confirm password',
                                   hintStyle: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w200,
-                                    color: Color(0xFF7277F1),
+                                    color: Color(0xFF5254d8),
                                     fontSize: ScreenUtil().setSp(12),
                                   )),
                             ),
@@ -345,7 +344,7 @@ class _EditProfileState extends State<EditProfile> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(36.h)),
-                                  color: Color(0xFF7277F1),
+                                  color: Color(0xFF5254d8),
                                   onPressed: _updateProfile,
                                   child: Text(
                                     'Confirm',

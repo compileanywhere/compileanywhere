@@ -84,7 +84,6 @@ class _ProgramViewState extends State<ProgramView> {
   @override
   Widget build(BuildContext context) {
     print(this.document.documentID + 'ashikkkkk');
-    ScreenUtil.init(context, width: 360, height: 640, allowFontScaling: true);
     return BackgroundBox(
       floatingActionButton: FloatingActionButton(
         elevation: 0,
@@ -96,7 +95,8 @@ class _ProgramViewState extends State<ProgramView> {
         backgroundColor: Colors.white,
         onPressed: () {
           showDialog(
-            // barrierColor: Colors.blueAccent,
+            barrierColor: null,
+            // barrierDismissible: false,
               context: context,
               builder: (BuildContext context) {
                 return Stack(
@@ -104,18 +104,17 @@ class _ProgramViewState extends State<ProgramView> {
                     // fit:StackFit.loose,
 
                     children: [
-                      SizedBox(height: 640.h,width: 360.w,),
+                      // SizedBox(height: 640.h,width: 360.w,
+                      // ),
                       Positioned(
                           bottom: 50.h,
                           left: 138.w,
-                            // 50.w,
-                            //   40.h,
-                            //   50.w,
-                            //   300.h,
+                          
                           child: LimitedBox(
                           maxHeight: 216.h,
                           maxWidth: 240.w,
                             child: Dialog(
+                              elevation: 0,
                              
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.h),
@@ -206,140 +205,6 @@ class _ProgramViewState extends State<ProgramView> {
       appBar: TransparentAppBar(
         title: "Program",
       ),
-//       bottomNavigatioBar: SingleChildScrollView(
-//         scrollDirection: Axis.horizontal,
-//         child: BottomAppBar(
-//           child: Row(
-//             children: [
-//               SizedBox(width: 16),
-//               ButtonTheme(
-//                 minWidth: 102.w,
-//                 height: 30.h,
-//                 child: OutlineButton(
-//                   onPressed: () {},
-//                   child: Text(
-//                     'Run',
-//                     style: GoogleFonts.poppins(
-//                       color: Color(0xff7277f1),
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: ScreenUtil().setSp(12),
-//                     ),
-//                   ),
-//                   shape: StadiumBorder(),
-//                   borderSide: BorderSide(
-//                     color: Color(0xff7277f1),
-//                     width: 1,
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 width: 26.w,
-//               ),
-//               ButtonTheme(
-//                 minWidth: 102.w,
-//                 height: 30.h,
-//                 child: OutlineButton(
-//                   onPressed: () {
-//                     _launchInBrowser(document['youtube']);
-// //  Navigator.of(context).push(MaterialPageRoute(
-// //                               builder: (context) => Comments(
-// //                                     programId: document.documentID,
-// //                                   )));
-//                   },
-//                   child: Text(
-//                     'YouTube',
-//                     style: GoogleFonts.poppins(
-//                       color: Color(0xff7277f1),
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: ScreenUtil().setSp(12),
-//                     ),
-//                   ),
-//                   shape: StadiumBorder(),
-//                   borderSide: BorderSide(
-//                     color: Color(0xff7277f1),
-//                     width: 1,
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 width: 26.w,
-//               ),
-//               ButtonTheme(
-//                 minWidth: 102.w,
-//                 height: 30.h,
-//                 child: OutlineButton(
-//                   onPressed: () {
-//                     _settingModalBottomSheet(context);
-//                   },
-//                   child: Text(
-//                     'Comments',
-//                     style: GoogleFonts.poppins(
-//                       color: Color(0xff7277f1),
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: ScreenUtil().setSp(12),
-//                     ),
-//                   ),
-//                   shape: StadiumBorder(),
-//                   borderSide: BorderSide(
-//                     color: Color(0xff7277f1),
-//                     width: 1,
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 width: 26.w,
-//               ),
-//               ButtonTheme(
-//                 minWidth: 102.w,
-//                 height: 30.h,
-//                 child: OutlineButton(
-//                   onPressed: () {
-//                     _settingModalBottomSheetforInput(context);
-//                   },
-//                   child: Text(
-//                     'Input',
-//                     style: GoogleFonts.poppins(
-//                       color: Color(0xff7277f1),
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: ScreenUtil().setSp(12),
-//                     ),
-//                   ),
-//                   shape: StadiumBorder(),
-//                   borderSide: BorderSide(
-//                     color: Color(0xff7277f1),
-//                     width: 1,
-//                   ),
-//                 ),
-//               ),
-//               SizedBox(
-//                 width: 26.w,
-//               ),
-//               ButtonTheme(
-//                 minWidth: 102.w,
-//                 height: 30.h,
-//                 child: OutlineButton(
-//                   onPressed: () {
-//                     _settingModalBottomSheetforOutput(context);
-//                   },
-//                   child: Text(
-//                     'Output',
-//                     style: GoogleFonts.poppins(
-//                       color: Color(0xff7277f1),
-//                       fontWeight: FontWeight.w600,
-//                       fontSize: ScreenUtil().setSp(12),
-//                     ),
-//                   ),
-//                   shape: StadiumBorder(),
-//                   borderSide: BorderSide(
-//                     color: Color(0xff7277f1),
-//                     width: 1,
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -638,7 +503,92 @@ class _ProgramViewState extends State<ProgramView> {
         });
   }
 
-  void _settingModalBottomSheetforOutput(context) {
+  // void _settingModalBottomSheetforOutput(context) {
+  //   //  DocumentSnapshot document;
+  //   // _settingModalBottomSheetforOutput(document);
+  //   Firestore db = Firestore.instance;
+
+  //   showModalBottomSheet(
+  //       context: context,
+  //       builder: (BuildContext bc) {
+  //         // print("eeeeeeeeeeeeee");
+
+  //         print(document.documentID);
+  //         return Expanded(
+  //           child:
+  //               // _buildCommentList(),
+  //               StreamBuilder(
+  //             stream: db
+  //                 .collection('comments')
+  //                 // .where('userName', isEqualTo: '1@username')
+  //                 .orderBy('creation_date', descending: true)
+  //                 // .where('programId', isEqualTo: document.documentID)
+  //                 .snapshots(),
+  //             builder: (context, snapshot) {
+  //               if (!snapshot.hasData) {
+  //                 return Center(
+  //                   child: FlutterLogo(),
+  //                 );
+  //               }
+
+  //               return ListView.builder(
+  //                 itemCount: snapshot.data.documents.length,
+  //                 itemBuilder: (context, index) => GestureDetector(
+  //                     onTap: () {},
+  //                     child: Text(
+  //                       snapshot.data.documents[index]['comments'],
+  //                     )),
+  //               );
+  //             },
+  //           ),
+  //         );
+  //       });
+  // }
+
+  // void _settingModalBottomSheetforInput(context) {
+  //   //  DocumentSnapshot document;
+  //   // _settingModalBottomSheetforOutput(document);
+  //   Firestore db = Firestore.instance;
+
+  //   showModalBottomSheet(
+  //       context: context,
+  //       builder: (BuildContext bc) {
+  //         // print("eeeeeeeeeeeeee");
+
+  //         print(document.documentID);
+  //         return Expanded(
+  //           child:
+  //               // _buildCommentList(),
+  //               StreamBuilder(
+  //             stream: db
+  //                 .collection('comments')
+  //                 // .where('userName', isEqualTo: '1@username')
+  //                 .orderBy('creation_date', descending: true)
+  //                 // .where('programId', isEqualTo: document.documentID)
+  //                 .snapshots(),
+  //             builder: (context, snapshot) {
+  //               if (!snapshot.hasData) {
+  //                 return Center(
+  //                   child: FlutterLogo(),
+  //                 );
+  //               }
+
+  //               return ListView.builder(
+  //                 itemCount: snapshot.data.documents.length,
+  //                 itemBuilder: (context, index) => GestureDetector(
+  //                     onTap: () {},
+  //                     child: Text(
+  //                       snapshot.data.documents[index]['comments'],
+  //                     )),
+  //               );
+  //             },
+  //           ),
+  //         );
+  //       });
+  // }
+
+
+void _settingModalBottomSheetforOutput(context) {
     //  DocumentSnapshot document;
     // _settingModalBottomSheetforOutput(document);
     Firestore db = Firestore.instance;
@@ -712,8 +662,32 @@ class _ProgramViewState extends State<ProgramView> {
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) => GestureDetector(
                       onTap: () {},
-                      child: Text(
-                        snapshot.data.documents[index]['comments'],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("sample output"),
+
+                                Spacer(),
+                                IconButton(
+                                  icon: Icon(
+                                    Icons.keyboard_arrow_down,
+                                    size: 25,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Text(
+                              snapshot.data.documents[index]['comments'],
+                            ),
+                            Divider(
+                              color: Colors.lightBlue,
+                              thickness: 2,
+                            )
+                          ],
+                        ),
                       )),
                 );
               },
@@ -722,6 +696,11 @@ class _ProgramViewState extends State<ProgramView> {
         });
   }
 }
+
+
+
+
+
 
 class Commment extends StatelessWidget {
   final String userName, comment, avatar;

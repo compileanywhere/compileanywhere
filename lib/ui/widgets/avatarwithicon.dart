@@ -34,7 +34,7 @@ class AvatarWithIcon extends StatelessWidget {
               child: CircleAvatar(
                 backgroundImage: avatar,
               ),
-              borderColor: whiteIcon ? Color(0xFF7277F1) : Colors.white,
+              borderColor: whiteIcon ? Color(0xFF5254d8) : Colors.white,
               borderWidth: ScreenUtil().setSp(1),
               radius: ScreenUtil().setSp(60),
             ),
