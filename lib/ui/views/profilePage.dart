@@ -143,10 +143,10 @@ class _ProfileState extends State<Profile> {
                             child: Container(
                           padding: EdgeInsets.only(top: 12.h, left: 16.w),
                           child: Text(
-                            "ass",
-                            // UserDetails().username == null
-                            //     ? Text('No username')
-                            //     : UserDetails().username,
+                            // "ass",
+                            UserDetails().username == null
+                                ? ('No username')
+                                : UserDetails().username,
 
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(15),
@@ -197,10 +197,10 @@ class _ProfileState extends State<Profile> {
                             child: Container(
                           padding: EdgeInsets.only(top: 18.h, left: 16.w),
                           child: new Text(
-                            // UserDetails().email == null
-                                // ? Text('No email')
-                                // : UserDetails().email, 
-                                "hr",
+                            UserDetails().email == null
+                                ? ('No email')
+                                : UserDetails().email, 
+                                // "hr",
                             style: TextStyle(
                               fontSize: ScreenUtil().setSp(15),
                             ),

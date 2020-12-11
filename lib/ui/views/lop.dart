@@ -68,16 +68,17 @@ class _ListofProgState extends State<ListofProg> {
 
   @override
   Widget build(BuildContext context) {
-    setState(()  {
-      Timer(Duration(seconds: 5), () => profilePicUrl = UserDetails().profilepic());
+    setState(() {
+      Timer(Duration(seconds: 5),
+          () => profilePicUrl = UserDetails().profilepic());
     });
 
     return BackgroundBox(
-      appBar: SearchBarAndNotification(controller: _searchController,),
+      appBar: SearchBarAndNotification(
+        controller: _searchController,
+      ),
       child: SingleChildScrollView(
         child: Column(children: [
-     
-
           SizedBox(
             height: 200.h,
             width: 360.w,
@@ -92,112 +93,109 @@ class _ListofProgState extends State<ListofProg> {
               // viewportFraction: 0.8,
               items: [
                 Container(
-              
-                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem301.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem301.png'),
                         fit: BoxFit.fill),
                   ),
                 ),
                 Container(
                   // color: Colors.amber,
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                  decoration: BoxDecoration(
-                    // color: Colors.amberAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem302.png'),
-                      fit: BoxFit.fill),
-                  ),
-                ),
-                Container(
-                   margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem401.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem302.png'),
                         fit: BoxFit.fill),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem402.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem401.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-                  margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem501.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem402.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-                    margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem502.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem501.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-                    margin: EdgeInsets.only(top:20.0.h,left:5.w),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
                   decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem601.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem502.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
+                  decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem602.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem601.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
+                  decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem701.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem602.png'),
                         fit: BoxFit.fill),
                   ),
-                ),Container(
-  margin: EdgeInsets.only(top:20.0.h,left:5.w),                    decoration: BoxDecoration(
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
+                  decoration: BoxDecoration(
                     // color: Colors.amberAccent,
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/sem_cards/LabCardSem702.png'),
+                        image: AssetImage('assets/sem_cards/LabCardSem701.png'),
+                        fit: BoxFit.fill),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20.0.h, left: 5.w),
+                  decoration: BoxDecoration(
+                    // color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image: AssetImage('assets/sem_cards/LabCardSem702.png'),
                         fit: BoxFit.fill),
                   ),
                 ),
               ],
             ),
           ),
-
-        
           Padding(
             padding: EdgeInsets.only(left: 16.w, top: 20.h),
             child: Align(
@@ -215,7 +213,7 @@ class _ListofProgState extends State<ListofProg> {
             height: MediaQuery.of(context).size.height * 0.59,
             width: MediaQuery.of(context).size.width * 0.9,
             child: StreamBuilder(
-              stream: db.collection('faculty').snapshots(),
+              stream: db.collection('programs').snapshots(),
               builder: (context, snapshot) {
                 // print(snapshot.data['name']);
 
@@ -225,10 +223,10 @@ class _ListofProgState extends State<ListofProg> {
                   );
                 }
                 return DraggableScrollbar.rrect(
-                     heightScrollThumb: 70,
-      controller: _rrectController,
-      // labelTextBuilder: (offset) => Text("${offset.floor()}"),
-                                  child: ListView.builder(
+                  heightScrollThumb: 70,
+                  controller: _rrectController,
+                  // labelTextBuilder: (offset) => Text("${offset.floor()}"),
+                  child: ListView.builder(
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
@@ -238,17 +236,21 @@ class _ListofProgState extends State<ListofProg> {
                                 )));
                       },
                       child: CustomCards(
-                        title: snapshot.data.documents[index]['name'],
-                        language: snapshot.data.documents[index]['dept'],
-                        username: snapshot.data.documents[index]['popularity']
+                        title: snapshot.data.documents[index]['Program_Title'],
+                        language: snapshot.data.documents[index]['Language'],
+                        username: snapshot.data.documents[index]['UserName']
+                        // language:"asdsd",
+                        // username:"dummy username"
                             .toString(),
                       ),
                     ),
+                    
                   ),
                 );
               },
             ),
           ),
+          // Container(height: 50.h,width: 10,)
         ]),
       ),
     );
@@ -303,10 +305,10 @@ void see() {
 
 Widget profilee() {
   return GestureDetector(
-    onTap:(){ 
-    //  Navigator.pushNamed(context,'/profile');
-      },
-      child: CircleAvatar(
+    onTap: () {
+      //  Navigator.pushNamed(context,'/profile');
+    },
+    child: CircleAvatar(
       foregroundColor: Colors.red,
       backgroundImage: AssetImage('assets/avatar.png'),
       // backgroundColor: Colors.blueAccent,
@@ -317,26 +319,22 @@ Widget profilee() {
   );
 }
 
-
-
 // Widget profilee() {
-//   return  FadeInImage.assetNetwork( 
+//   return  FadeInImage.assetNetwork(
 //     image:UserDetails().profilepic,
 //     placeholder:'assets/sem_cards/LabCardSem301.png',// your assets image path
 //     fit: BoxFit.cover,
 //   );
 // }
 
-
 // Widget profilee(){
 //   // print(UserDetails().profilepic + 'ashi:::::::::::::::::::::::::::::::::::::::::::');
 // return Image.network(
 //      'https://firebasestorage.googleapis.com/v0/b/compile-anywhere.appspot.com/o/Avatar%2F4ryMIkoCnMPTuJ9Oks8auWZVhV92.jpg?alt=media&token=e4e1b1ea-4286-482b-a6e8-0d4121129c55',
 //       fit: BoxFit.cover,
-      
+
 //   );
 // }
-
 
 ///Divya's code:
 ///

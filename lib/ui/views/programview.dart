@@ -83,7 +83,7 @@ class _ProgramViewState extends State<ProgramView> {
 
   @override
   Widget build(BuildContext context) {
-    print(this.document.documentID + 'ashikkkkk');
+    // print(this.document.documentID + 'ashikkkkk');
     return BackgroundBox(
       floatingActionButton: FloatingActionButton(
         elevation: 0,
@@ -95,107 +95,103 @@ class _ProgramViewState extends State<ProgramView> {
         backgroundColor: Colors.white,
         onPressed: () {
           showDialog(
-            barrierColor: null,
-            // barrierDismissible: false,
+              barrierColor: null,
+              // barrierDismissible: false,
               context: context,
               builder: (BuildContext context) {
                 return Stack(
-                  // alignment: Alignment.bottomRight,
+                    // alignment: Alignment.bottomRight,
                     // fit:StackFit.loose,
 
                     children: [
                       // SizedBox(height: 640.h,width: 360.w,
                       // ),
                       Positioned(
-                          bottom: 50.h,
-                          left: 138.w,
-                          
-                          child: LimitedBox(
+                        bottom: 50.h,
+                        left: 138.w,
+                        child: LimitedBox(
                           maxHeight: 216.h,
                           maxWidth: 240.w,
-                            child: Dialog(
-                              elevation: 0,
-                             
-                              shape: RoundedRectangleBorder(
+                          child: Dialog(
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.h),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xff5254d8),
                                 borderRadius: BorderRadius.circular(8.h),
                               ),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color:Color(0xff5254d8),
-
-                                  borderRadius: BorderRadius.circular(8.h),
-                                ),
-                                                        
-                                child: SizedBox(
-                                  width: 16.w,
-                                  height: 300.h,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 16.w,
-                                      vertical: 16.h,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
+                              child: SizedBox(
+                                width: 16.w,
+                                height: 300.h,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 16.w,
+                                    vertical: 16.h,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       PopButton(
                                         iconn: Icons.input,
-                                        onTap: (){
-                                          _settingModalBottomSheetforInput(context);
+                                        onTap: () {
+                                          _settingModalBottomSheetforInput(
+                                              context);
                                         },
                                         title: 'Input',
                                       ),
-                                    GestureDetector(
-                                          onTap: (){
-                                            _settingModalBottomSheetforOutput(context);
-                                          },
-                                                      child: Row(
-                                              children: [
-                      SizedBox(height:24.h,
-                        child:Image.asset(
-                          'assets/output.png'
-                        )
-                      ),
-                      SizedBox(
-                        width: 8.w,
-                      ),
-                      Text(' Output',
-                      style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                            ),
-                      ),
-                                              ],
-                                            ),
-                                        ),
-                                        PopButton(
-                                        iconn: Icons.play_arrow,
-                                        onTap: (){
-                                      
+                                      GestureDetector(
+                                        onTap: () {
+                                          _settingModalBottomSheetforOutput(
+                                              context);
                                         },
+                                        child: Row(
+                                          children: [
+                                            SizedBox(
+                                                height: 24.h,
+                                                child: Image.asset(
+                                                    'assets/output.png')),
+                                            SizedBox(
+                                              width: 8.w,
+                                            ),
+                                            Text(
+                                              ' Output',
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      PopButton(
+                                        iconn: Icons.play_arrow,
+                                        onTap: () {},
                                         title: 'Run',
                                       ),
-                                       PopButton(
-                                        iconn:AntIcons.youtube_outline,
-                                        onTap: (){
-                                       _launchInBrowser(document['youtube']);
+                                      PopButton(
+                                        iconn: AntIcons.youtube_outline,
+                                        onTap: () {
+                                          _launchInBrowser(document['youtube']);
                                         },
                                         title: 'YouTube',
                                       ),
-                                         PopButton(
+                                      PopButton(
                                         iconn: Icons.chat_bubble_outline,
-                                        onTap: (){
-                                       _settingModalBottomSheet(context);
+                                        onTap: () {
+                                          _settingModalBottomSheet(context);
                                         },
                                         title: 'Q&A',
                                       ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
                           ),
                         ),
+                      ),
                     ]);
               });
         },
@@ -226,7 +222,8 @@ class _ProgramViewState extends State<ProgramView> {
                             child: CircularProfileAvatar(
                               null,
                               child: Image(
-                                image: NetworkImage(document['avatar_link']),
+                                image:
+                                    NetworkImage(document['Profile_pic_url']),
                               ),
                               borderColor: Color(0xFF7277F1),
                               borderWidth: ScreenUtil().setSp(1),
@@ -235,7 +232,7 @@ class _ProgramViewState extends State<ProgramView> {
                           ),
                           title: RichText(
                             text: TextSpan(
-                              text: document['name'],
+                              text: document['UserName'],
                               style: GoogleFonts.poppins(
                                 color: Color(0xFF333333),
                                 fontSize: ScreenUtil().setSp(13),
@@ -253,8 +250,8 @@ class _ProgramViewState extends State<ProgramView> {
                             ),
                           ),
                           subtitle: Text(
-                            // document['creation_date'],
-                            "here the time vll come",
+                            document['Date'],
+                            // "here the time vll come",
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
                               color: Color(0xFF4f4f4f),
@@ -289,7 +286,7 @@ class _ProgramViewState extends State<ProgramView> {
                               alignment: Alignment.topLeft,
                               child: Text(
                                 // document['title'],
-                                document['dept'],
+                                document['Lab'],
 
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w500,
@@ -316,7 +313,7 @@ class _ProgramViewState extends State<ProgramView> {
                               alignment: Alignment.topLeft,
                               child: Text(
                                 // document['description'],
-                                document['comments'],
+                                document['Program_Description'],
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xFF333333),
@@ -369,7 +366,7 @@ class _ProgramViewState extends State<ProgramView> {
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              document['code'],
+                              document['Program_Code'],
 
                               // 'program vll come here',
                               style: GoogleFonts.sourceCodePro(
@@ -404,7 +401,7 @@ class _ProgramViewState extends State<ProgramView> {
         builder: (BuildContext bc) {
           // print("eeeeeeeeeeeeee");
 
-          print(document.documentID);
+          print(document.documentID + "document.doc id it seems");
           return Scaffold(
             backgroundColor: Colors.white,
             body: Form(
@@ -452,7 +449,6 @@ class _ProgramViewState extends State<ProgramView> {
                       StreamBuilder(
                     stream: db
                         .collection('comments')
-                        // .where('userName', isEqualTo: '1@username')
                         .orderBy('creation_date', descending: true)
                         .where('programId', isEqualTo: document.documentID)
                         .snapshots(),
@@ -488,7 +484,10 @@ class _ProgramViewState extends State<ProgramView> {
 
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.all(20),
-                      hintText: "Add coments"),
+                      hintText: "Add coment",
+                      hintStyle: GoogleFonts.poppins(
+                        color: Colors.black,
+                      )),
                   validator: (input) {
                     if (input.isEmpty) {
                       print(input);
@@ -496,99 +495,19 @@ class _ProgramViewState extends State<ProgramView> {
                     }
                   },
                   onSaved: (input) => _coments = input,
-                ),
+                )
+
+                // RaisedButton(onPressed: postComment(),
+                // child: Text('done'),
+
+                // )
               ]),
             ),
           );
         });
   }
 
-  // void _settingModalBottomSheetforOutput(context) {
-  //   //  DocumentSnapshot document;
-  //   // _settingModalBottomSheetforOutput(document);
-  //   Firestore db = Firestore.instance;
-
-  //   showModalBottomSheet(
-  //       context: context,
-  //       builder: (BuildContext bc) {
-  //         // print("eeeeeeeeeeeeee");
-
-  //         print(document.documentID);
-  //         return Expanded(
-  //           child:
-  //               // _buildCommentList(),
-  //               StreamBuilder(
-  //             stream: db
-  //                 .collection('comments')
-  //                 // .where('userName', isEqualTo: '1@username')
-  //                 .orderBy('creation_date', descending: true)
-  //                 // .where('programId', isEqualTo: document.documentID)
-  //                 .snapshots(),
-  //             builder: (context, snapshot) {
-  //               if (!snapshot.hasData) {
-  //                 return Center(
-  //                   child: FlutterLogo(),
-  //                 );
-  //               }
-
-  //               return ListView.builder(
-  //                 itemCount: snapshot.data.documents.length,
-  //                 itemBuilder: (context, index) => GestureDetector(
-  //                     onTap: () {},
-  //                     child: Text(
-  //                       snapshot.data.documents[index]['comments'],
-  //                     )),
-  //               );
-  //             },
-  //           ),
-  //         );
-  //       });
-  // }
-
-  // void _settingModalBottomSheetforInput(context) {
-  //   //  DocumentSnapshot document;
-  //   // _settingModalBottomSheetforOutput(document);
-  //   Firestore db = Firestore.instance;
-
-  //   showModalBottomSheet(
-  //       context: context,
-  //       builder: (BuildContext bc) {
-  //         // print("eeeeeeeeeeeeee");
-
-  //         print(document.documentID);
-  //         return Expanded(
-  //           child:
-  //               // _buildCommentList(),
-  //               StreamBuilder(
-  //             stream: db
-  //                 .collection('comments')
-  //                 // .where('userName', isEqualTo: '1@username')
-  //                 .orderBy('creation_date', descending: true)
-  //                 // .where('programId', isEqualTo: document.documentID)
-  //                 .snapshots(),
-  //             builder: (context, snapshot) {
-  //               if (!snapshot.hasData) {
-  //                 return Center(
-  //                   child: FlutterLogo(),
-  //                 );
-  //               }
-
-  //               return ListView.builder(
-  //                 itemCount: snapshot.data.documents.length,
-  //                 itemBuilder: (context, index) => GestureDetector(
-  //                     onTap: () {},
-  //                     child: Text(
-  //                       snapshot.data.documents[index]['comments'],
-  //                     )),
-  //               );
-  //             },
-  //           ),
-  //         );
-  //       });
-  // }
-
-
-void _settingModalBottomSheetforOutput(context) {
+  void _settingModalBottomSheetforOutput(context) {
     //  DocumentSnapshot document;
     // _settingModalBottomSheetforOutput(document);
     Firestore db = Firestore.instance;
@@ -599,32 +518,47 @@ void _settingModalBottomSheetforOutput(context) {
           // print("eeeeeeeeeeeeee");
 
           print(document.documentID);
-          return Expanded(
-            child:
-                // _buildCommentList(),
-                StreamBuilder(
-              stream: db
-                  .collection('comments')
-                  // .where('userName', isEqualTo: '1@username')
-                  .orderBy('creation_date', descending: true)
-                  // .where('programId', isEqualTo: document.documentID)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: FlutterLogo(),
-                  );
-                }
-
-                return ListView.builder(
-                  itemCount: snapshot.data.documents.length,
-                  itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {},
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body: Form(
+              key: _formKey,
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 22.0.w,
+                        top: 10.h,
+                      ),
                       child: Text(
-                        snapshot.data.documents[index]['comments'],
-                      )),
-                );
-              },
+                        'Sample Output',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff4740e8),
+                          fontSize: ScreenUtil().setSp(18),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 28.0.w, top: 10.h),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Color(0xff4740e8),
+                          size: ScreenUtil().setSp(28),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+
+                // _buildCommentList(),
+                Text(document["Program_Output"]),
+              ]),
             ),
           );
         });
@@ -641,66 +575,57 @@ void _settingModalBottomSheetforOutput(context) {
           // print("eeeeeeeeeeeeee");
 
           print(document.documentID);
-          return Expanded(
-            child:
-                // _buildCommentList(),
-                StreamBuilder(
-              stream: db
-                  .collection('comments')
-                  // .where('userName', isEqualTo: '1@username')
-                  .orderBy('creation_date', descending: true)
-                  // .where('programId', isEqualTo: document.documentID)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: FlutterLogo(),
-                  );
-                }
-
-                return ListView.builder(
-                  itemCount: snapshot.data.documents.length,
-                  itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {},
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("sample output"),
-
-                                Spacer(),
-                                IconButton(
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down,
-                                    size: 25,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Text(
-                              snapshot.data.documents[index]['comments'],
-                            ),
-                            Divider(
-                              color: Colors.lightBlue,
-                              thickness: 2,
-                            )
-                          ],
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body: Form(
+              key: _formKey,
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 22.0.w,
+                        top: 10.h,
+                      ),
+                      child: Text(
+                        'Sample Input',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xff4740e8),
+                          fontSize: ScreenUtil().setSp(18),
                         ),
-                      )),
-                );
-              },
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 28.0.w, top: 10.h),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Color(0xff4740e8),
+                          size: ScreenUtil().setSp(28),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Divider(
+                  color: Color(0xff4740e8),
+                  thickness: 1,
+                ),
+                Expanded(
+                    child:
+                        // _buildCommentList(),
+                        Text(document["Program_Input"])),
+              ]),
             ),
           );
         });
   }
 }
-
-
-
-
-
 
 class Commment extends StatelessWidget {
   final String userName, comment, avatar;
@@ -710,33 +635,47 @@ class Commment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("inside the comments");
     return Column(
       children: [
-        ListTile(
-          leading: CircularProfileAvatar(
-            null,
-            child: Image(
-              image: NetworkImage(avatar),
+        Column(children: [
+          ListTile(
+            leading: CircularProfileAvatar(
+              null,
+              child: Image(
+                image: NetworkImage(avatar),
+              ),
+              borderColor: Color(0xFF7277F1),
+              borderWidth: ScreenUtil().setSp(1),
+              radius: ScreenUtil().setSp(26),
             ),
-            borderColor: Color(0xFF7277F1),
-            borderWidth: ScreenUtil().setSp(1),
-            radius: ScreenUtil().setSp(26),
-          ),
-          title: Text(
-            'Posted by  ' + userName,
-            style: GoogleFonts.poppins(
-                fontSize: ScreenUtil().setSp(13), fontWeight: FontWeight.w400),
-          ),
-          subtitle: Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              comment,
-              style: GoogleFonts.poppins(
-                  fontSize: ScreenUtil().setSp(13),
-                  fontWeight: FontWeight.w600),
+            title: Row(
+              children: [
+                Text(
+                  'Posted by  ',
+                  style: GoogleFonts.poppins(
+                      fontSize: ScreenUtil().setSp(13),
+                      fontWeight: FontWeight.w400),
+                ),
+                Text(
+                  userName,
+                  style: GoogleFonts.poppins(
+                      fontSize: ScreenUtil().setSp(13),
+                      fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+            subtitle: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                comment,
+                style: GoogleFonts.poppins(
+                    fontSize: ScreenUtil().setSp(13),
+                    fontWeight: FontWeight.w600),
+              ),
             ),
           ),
-        ),
+        ]),
         Divider(
           color: Color(0xFF7277f1),
           thickness: 1,
@@ -746,34 +685,35 @@ class Commment extends StatelessWidget {
   }
 }
 
-
 class PopButton extends StatelessWidget {
   final Function onTap;
   final IconData iconn;
   final String title;
 
-  const PopButton({Key key, this.onTap, this.iconn, this.title}) : super(key: key);
-
+  const PopButton({Key key, this.onTap, this.iconn, this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-                                      onTap: onTap,
-                                                                          child: Row(
-                                          children: [
-                                            Icon(iconn,
-                                            color: Colors.white,
-                                            ),
-                                            SizedBox(
-                                              width: 8.w,
-                                            ),
-                                            Text(title,
-                                            style: GoogleFonts.poppins(
-                                              color:Colors.white,
-                                            ),
-                                            ),
-                                          ],
-                                        ),
-                                    );
+      onTap: onTap,
+      child: Row(
+        children: [
+          Icon(
+            iconn,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 8.w,
+          ),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
